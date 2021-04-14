@@ -11,6 +11,7 @@ import xarray as xr
 import tqdm
 print("Finished loading modules")
 
+overwrite = False
 fn_zarr = '../data/IR_worldview_everyotherline_NH_daily_pattern_distribution.zarr'
 output_file = "../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.zarr"
 
@@ -41,17 +42,18 @@ nb_lons = len(lon_center)
 nb_lats = len(lat_center)
 nb_patterns = len(ds_classifications_input.pattern)
 
-if os.path.exists(output_file):
+if os.path.exists(output_file) and not overwrite:
     print("File already exists.")
     root_grp = zarr.open(output_file)
     count = root_grp["counts"]
+    times = root_grp["time"]
 else:
     print("File will be newly created.")
     store = zarr.DirectoryStore(output_file)
     root_grp = zarr.group(store, overwrite=True)
     count = root_grp.create_dataset('counts', shape=(nb_times, nb_lons, nb_lats, nb_patterns),
                                    chunks=(1, nb_lons, nb_lats, nb_patterns),
-                                   dtype=bool, compressor=zarr.Zlib(level=1))
+                                   dtype=float, compressor=zarr.Zlib(level=1))
     times = root_grp.create_dataset('time', shape=(nb_times), chunks=(nb_times),
                                     dtype='<M8[ns]',compressor=zarr.Zlib(level=1))
     lats = root_grp.create_dataset('latitude', shape=(nb_lats), chunks=(nb_lats),
@@ -91,8 +93,9 @@ else:
 
 print("Start actual calculation")
 for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
-    if d <= 1985: continue 
+    if d <= 2008: continue
     day_sel = ds_classifications_input.sel(dates=date)
 
     count[d,:,:,:] = calculate_mean(day_sel.mask).compute().astype(float)
+    times[d] = date.values.astype("<M8[ns]")
 
