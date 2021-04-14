@@ -1,0 +1,4 @@
+[core]
+    remote = owncloud-remote
+['remote "owncloud-remote"']
+    url = https://owncloud.gwdg.de/index.php/s/CyOfaIWdY3CA43R
