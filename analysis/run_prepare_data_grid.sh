@@ -16,3 +16,7 @@ git --describe --always
 cd /work/mh0010/m300408/CloudMorphology/analysis/
 python prepare_data_grid.py
 
+source activate /work/mh0010/m300408/anaconda3/envs/BCOenv
+python convert_data_grid.py
+mv ../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc2 ../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc
+ 
