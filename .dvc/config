@@ -1,6 +1,6 @@
 [core]
     remote = owncloud-remote
 ['remote "owncloud-remote"']
-    url = webdavs://owncloud.gwdg.de/remote.php/nonshib-webdav/DVCtest
+    url = webdavs://owncloud.gwdg.de/public.php/webdav
     ask_password = true
-    user = hauke.schulz@mpimet.mpg.de
+    user = B7wtwgWGDICCOJW
