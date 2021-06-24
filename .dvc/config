@@ -2,5 +2,4 @@
     remote = owncloud-remote
 ['remote "owncloud-remote"']
     url = webdavs://owncloud.gwdg.de/public.php/webdav
-    ask_password = true
     user = B7wtwgWGDICCOJW
