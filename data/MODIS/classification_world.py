@@ -1,30 +1,19 @@
-# import cv2
+import datetime as dt
 import os
-import sys
+from glob import glob
 
 import keras
 import keras_retinanet
-
-# import miscellaneous modules
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import skimage
+import tensorflow as tf
 from keras_retinanet import models
 from keras_retinanet.utils.colors import label_color
 from keras_retinanet.utils.image import preprocess_image, read_image_bgr, resize_image
 from keras_retinanet.utils.visualization import draw_box, draw_caption
 from PIL import Image
-
-sys.path.append(".")
-import datetime as dt
-from glob import glob
-
-import numpy as np
-import pandas as pd
-import skimage
-import tensorflow as tf
-from pyclouds.helpers import *
-from pyclouds.imports import *
-from pyclouds.plot import *
-from pyclouds.zooniverse import *
 from tqdm import tqdm as tqdm
 
 model_path_IR = "/home/mpim/m300408/inference/resnet50_csv_11.h5"
@@ -45,6 +34,10 @@ def get_session():
     config = tf.ConfigProto()
     config.gpu_options.allow_growth = True
     return tf.Session(config=config)
+
+
+def xy2wh(x1, y1, x2, y2):
+    return [x1, y1, x2 - x1, y2 - y1]
 
 
 # use this environment flag to change which GPU to use
