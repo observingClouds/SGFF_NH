@@ -15,18 +15,12 @@ from keras_retinanet.utils.visualization import draw_box, draw_caption
 from PIL import Image
 from tqdm import tqdm as tqdm
 
-model_path_IR = "/home/mpim/m300408/inference/resnet50_csv_11.h5"
-model_path_VIS = (
-    "/home/mpim/m300408/CloudClassification/exp5_resnet50_csv_20_inference.h5"
-)
+model_path_IR = "/work/mh0010/from_Mistral/mh0010/m300408/CharacterizationOfMesoscalePatterns/Classification/NN-training/inference_models/resnet50_csv_11.h5"
+model_path_VIS = "/work/mh0010/from_Mistral/mh0010/m300408/CharacterizationOfMesoscalePatterns/Classification/NN-training/inference_models/exp5_resnet50_csv_20_inference.h5"
 output_labels = "labels.csv"
 
 model_type = "IR"  # Choose between IR and VIS
-# input_files_fmt = '/scratch/m/m300408/MODIS/VIS_world/*.jpeg'
-# input_files_fmt = '/scratch/m/m300408/MODIS/Aqua_MODIS_Aqua_CorrectedReflectance_TrueColor*.jpeg'
-input_files_fmt = (
-    "/scratch/m/m300408/MODIS/Aqua_MODIS_Aqua_Brightness_Temp_Band31_Day*.jpeg"
-)
+input_files_fmt = "/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS/Aqua_MODIS_IR/Aqua_Brightness_Temp_Band31_Day*.jpeg"
 
 
 def get_session():
