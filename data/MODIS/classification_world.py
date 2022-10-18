@@ -4,7 +4,6 @@ from glob import glob
 
 import keras
 import keras_retinanet
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import skimage
