@@ -41,9 +41,9 @@ tf.compat.v1.keras.backend.set_session(get_session())
 
 # !keras_retinanet/bin/convert_model.py /path/to/training/model.h5 /path/to/save/inference/model.h5
 if model_type == "VIS":
-    model = models.load_model(model_path_VIS, backbone_name="resnet50")
+    model = models.load_model(model_path_VIS, backbone_name="resnet50", compile=False)
 elif model_type == "IR":
-    model = models.load_model(model_path_IR, backbone_name="resnet50")
+    model = models.load_model(model_path_IR, backbone_name="resnet50", compile=False)
 
 labels_to_names = {i: l for i, l in enumerate(["Flower", "Fish", "Gravel", "Sugar"])}
 
