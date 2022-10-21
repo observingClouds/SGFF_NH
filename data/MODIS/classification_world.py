@@ -15,7 +15,7 @@ from keras_retinanet.utils.visualization import draw_box, draw_caption
 from PIL import Image
 from tqdm import tqdm as tqdm
 
-model_path_IR = "/work/mh0010/from_Mistral/mh0010/m300408/CharacterizationOfMesoscalePatterns/Classification/NN-training/inference_models/resnet50_csv_11.h5"
+model_path_IR = "/work/mh0010/from_Mistral/mh0010/m300408/CharacterizationOfMesoscalePatterns/Classification/NN-training/inference_models/resnet50_csv_11_inference_IR.h5"
 model_path_VIS = "/work/mh0010/from_Mistral/mh0010/m300408/CharacterizationOfMesoscalePatterns/Classification/NN-training/inference_models/exp5_resnet50_csv_20_inference.h5"
 output_labels = "labels.csv"
 
