@@ -24,9 +24,9 @@ input_files_fmt = "/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data
 
 
 def get_session():
-    config = tf.ConfigProto()
+    config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
-    return tf.Session(config=config)
+    return tf.compat.v1.Session(config=config)
 
 
 def xy2wh(x1, y1, x2, y2):
@@ -37,7 +37,7 @@ def xy2wh(x1, y1, x2, y2):
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # set the modified tf session as backend in keras
-keras.backend.tensorflow_backend.set_session(get_session())
+tf.compat.v1.keras.backend.set_session(get_session())
 
 # !keras_retinanet/bin/convert_model.py /path/to/training/model.h5 /path/to/save/inference/model.h5
 if model_type == "VIS":
