@@ -8,6 +8,7 @@ import numpy as np
 import pandas as pd
 import skimage
 import tensorflow as tf
+import tensorflow.keras.backend as K
 from keras_retinanet import models
 from keras_retinanet.utils.colors import label_color
 from keras_retinanet.utils.image import preprocess_image, read_image_bgr, resize_image
@@ -37,7 +38,7 @@ def xy2wh(x1, y1, x2, y2):
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 # set the modified tf session as backend in keras
-keras.backend.tensorflow_backend.set_session(get_session())
+K.tensorflow_backend.set_session(get_session())
 
 # !keras_retinanet/bin/convert_model.py /path/to/training/model.h5 /path/to/save/inference/model.h5
 if model_type == "VIS":
