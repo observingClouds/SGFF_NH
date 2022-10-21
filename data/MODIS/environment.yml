@@ -1,0 +1,16 @@
+name: sgff
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - scikit-image
+  - pillow
+  - pandas
+  - tqdm
+  - keras
+  - tensorflow
+  - cudatoolkit
+  - tensorflow-gpu
+  - pip
+  - pip:
+    - keras-retinanet
