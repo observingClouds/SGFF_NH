@@ -145,5 +145,5 @@ for s in range(1, len(sub_ind)):
     df = pd.DataFrame.from_dict(result_dict, orient="index")
     df.head()
     df.to_pickle(
-        f"world_pattern_windowmethod_everyotherline_{model_type}_{str(s1)}-{str(s2)}_202103.pkl"
+        "world_pattern_windowmethod_everyotherline_{model_type}_{s1:04g}-{s2:04g}_202103.pkl"
     )
