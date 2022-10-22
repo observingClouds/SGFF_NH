@@ -1,3 +1,14 @@
+#!/home/m/m300408/.conda/envs/sgff_post/bin/python
+#SBATCH --account=mh0010
+#SBATCH --job-name=post_classification.run
+#SBATCH --partition=shared
+#SBATCH --chdir=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS
+#SBATCH --nodes=1
+#SBATCH --output=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS/logs/LOG.run_classification_world_post.%j.o
+#SBATCH --error=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS/logs/LOG.run_classification_world_post.%j.o
+#SBATCH --time=02:00:00
+#SBATCH --mail-user=hauke.schulz@mpimet.mpg.de
+#SBATCH --mail-type=ALL
 """Merge pkl files of classification_world.py to something useful
 """
 import datetime as dt
