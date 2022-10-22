@@ -7,7 +7,7 @@
 #SBATCH --output=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/analysis/logs/LOG.prepare_data_grid.%j.o
 #SBATCH --error=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/analysis/logs/LOG.prepare_data_grid.%j.o
 #SBATCH --exclusive
-#SBATCH --time=04:00:00
+#SBATCH --time=05:00:00
 #=============================================================================
 module load git
 source activate sgff_post
