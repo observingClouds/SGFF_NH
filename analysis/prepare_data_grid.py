@@ -129,9 +129,9 @@ else:
 
 print("Start actual calculation")
 for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
-    if d <= 2008:
-        continue
     day_sel = ds_classifications_input.sel(dates=date)
 
-    count[d, :, :, :] = calculate_mean(day_sel.mask.fillna(0).astype(int)).compute().astype(float)
+    count[d, :, :, :] = (
+        calculate_mean(day_sel.mask.fillna(0).astype(int)).compute().astype(float)
+    )
     times[d] = date.values.astype("<M8[ns]")
