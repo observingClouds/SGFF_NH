@@ -129,6 +129,8 @@ else:
 
 print("Start actual calculation")
 for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
+    if d <= 1340:
+        continue
     day_sel = ds_classifications_input.sel(dates=date)
 
     count[d, :, :, :] = (
