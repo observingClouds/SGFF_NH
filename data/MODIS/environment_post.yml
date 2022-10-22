@@ -1,0 +1,11 @@
+name: sgff_post
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - zarr  #for postprocessing
+  - numpy>=1.20.0 #for postprocessing
+  - pandas
+  - tqdm
+  - xarray
+  - dask
