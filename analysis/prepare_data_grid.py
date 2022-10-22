@@ -12,16 +12,16 @@ import zarr
 print("Finished loading modules")
 
 overwrite = False
-fn_zarr = "../data/IR_worldview_everyotherline_NH_daily_pattern_distribution.zarr"
-output_file = "../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.zarr"
+fn_zarr = "../data/MODIS/IR_worldview_everyotherline_NH_daily_pattern_distribution_2003-2009.zarr"
+output_file = "../data/MODIS/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF_2003-2009.zarr"
 
 lat_bins = np.arange(-10, 55, 1)
 lat_center = np.arange(-9.5, 54.5, 1)
 lon_bins = np.arange(-100, 10, 1)
 lon_center = np.arange(-99.5, 9.5, 1)
 
-label_map = {"Sugar": 0, "Fish": 3, "Flowers": 2, "Flower": 2, "Gravel": 1}
-label_map_rv = {0: "Sugar", 1: "Gravel", 2: "Flowers", 3: "Fish"}
+label_map = {"Sugar": 0, "Fish": 1, "Flowers": 2, "Flower": 2, "Gravel": 3}
+label_map_rv = {0: "Sugar", 3: "Gravel", 2: "Flowers", 1: "Fish"}
 
 
 def calculate_mean(da):
@@ -133,5 +133,5 @@ for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
         continue
     day_sel = ds_classifications_input.sel(dates=date)
 
-    count[d, :, :, :] = calculate_mean(day_sel.mask).compute().astype(float)
+    count[d, :, :, :] = calculate_mean(day_sel.mask.fillna(0).astype(int)).compute().astype(float)
     times[d] = date.values.astype("<M8[ns]")
