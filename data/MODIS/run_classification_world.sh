@@ -7,8 +7,8 @@
 #SBATCH --output=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS/logs/LOG.run_classification_world.%j.o
 #SBATCH --error=/work/mh0010/from_Mistral/mh0010/m300408/CloudMorphology/data/MODIS/logs/LOG.run_classification_world.%j.o
 #SBATCH --exclusive
-#SBATCH --mem-per-cpu=248000
-#SBATCH --time=12:00:00
+#SBATCH --mem=248GB
+#SBATCH --time=02:00:00
 #SBATCH --mail-user=hauke.schulz@mpimet.mpg.de
 #SBATCH --mail-type=ALL
 
