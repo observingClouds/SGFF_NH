@@ -28,7 +28,7 @@ def create_mask(
     for i, lab in enumerate(labels):
         mask_layer = label_map[lab]
         x1, y1, x2, y2 = np.array(xy_boxes[i]).astype(int)
-        out[x1:x2, y1:y2, mask_layer] += 1
+        out[x1:x2, y1:y2, mask_layer] = True
 
     return out
 
