@@ -2,8 +2,12 @@ import numpy as np
 import xarray as xr
 import zarr
 
-input_file = "../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.zarr"  # zarr input
-output_file = "../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc"  # netCDF output
+input_file = (
+    "../data/MODIS/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF_2003-2009.zarr"  # zarr input
+)
+output_file = (
+    "../data/MODIS/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF_2003-2009.nc"  # netCDF output
+)
 ds_in = xr.open_zarr(input_file)
 
 
