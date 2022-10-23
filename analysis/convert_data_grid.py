@@ -13,6 +13,8 @@ ds_in = xr.open_zarr(input_file)
 
 ds_in_dropped_NaTs = ds_in.sel(time=~np.isnat(ds_in.time))
 
+
+del ds_in_dropped_NaTs.counts.time.attrs["_FillValue"]
 ds_in_dropped_NaTs.to_netcdf(
     output_file,
     encoding={
