@@ -22,8 +22,8 @@ ds_in_dropped_NaTs.to_netcdf(
 )
 
 ds_in2 = xr.open_dataset(output_file)
-ds_in2["counts"] = ds_in2.counts[:, :, :, [0, 3, 2, 1]]
-ds_in2["counts"].data = ds_in2.counts.values[:, :, :, [0, 3, 2, 1]]
+ds_in2["counts"] = ds_in2.counts[:, :, :, [0, 1, 2, 3]]
+ds_in2["counts"].data = ds_in2.counts.values[:, :, :, [0, 1, 2, 3]]
 
 ds_in2.counts.attrs["units"] = ""
 ds_in2.counts.attrs["cell_methods"] = "area: count"
@@ -43,7 +43,6 @@ ds_in2["longitude"].attrs["units"] = "degree_east"
 ds_in2["latitude"].attrs["bounds"] = "latitude_bnds"
 ds_in2["latitude"].attrs["standard_name"] = "latitude"
 ds_in2["latitude"].attrs["units"] = "degree_north"
-ds_in2.attrs["history"] += "Switching Gravel/Fish labels"
 ds_in2.to_netcdf(
     output_file + "2",
     encoding={
