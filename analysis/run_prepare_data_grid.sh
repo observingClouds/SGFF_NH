@@ -10,9 +10,10 @@
 #SBATCH --time=05:00:00
 #=============================================================================
 module load git
-source activate sgff_post
+#source activate sgff_post
 git --describe --always
-python prepare_data_grid.py
+#python prepare_data_grid.py
 
-#python convert_data_grid.py
+source activate covariability
+python convert_data_grid.py
 #mv ../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc2 ../data/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc
