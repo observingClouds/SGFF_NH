@@ -3,3 +3,4 @@
 ['remote "owncloud-remote"']
     url = webdavs://owncloud.gwdg.de/public.php/webdav
     user = B7wtwgWGDICCOJW
+    password = ''
