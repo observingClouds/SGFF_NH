@@ -1,0 +1,9 @@
+stages:
+  patterns_along_traj:
+    cmd: python patterns_along_trajectory.py
+    wdir: analysis
+    deps:
+    - ../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc
+    - ../data/SGFF/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc
+    outs:
+    - ../figures/patterns_along_trajectory.pdf

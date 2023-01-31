@@ -1,0 +1,15 @@
+schema: '2.0'
+stages:
+  patterns_along_traj:
+    cmd: python patterns_along_trajectory.py
+    deps:
+    - path: ../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc
+      md5: dec7390e2ba1db4fd9da291db1363ff8
+      size: 6107971
+    - path: ../data/SGFF/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc
+      md5: 3d4d99222e23d60a52e04a8d4f21bd90
+      size: 2285993
+    outs:
+    - path: ../figures/patterns_along_trajectory.pdf
+      md5: 9d5e25adb57849557b2a9be506e9bba5
+      size: 14984
