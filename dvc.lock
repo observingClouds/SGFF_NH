@@ -10,6 +10,9 @@ stages:
       md5: 3d4d99222e23d60a52e04a8d4f21bd90
       size: 2285993
     outs:
+    - path: ../data/result/patterns_along_trajectories.pq
+      md5: 2e7b90d96f16556b006fc2969b74929f
+      size: 93253
     - path: ../figures/patterns_along_trajectory.pdf
-      md5: 9d5e25adb57849557b2a9be506e9bba5
+      md5: fa443afbba6b5319a0b33ab7a5d6e862
       size: 14984
