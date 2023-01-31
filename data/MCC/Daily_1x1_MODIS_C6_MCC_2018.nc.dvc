@@ -1,0 +1,4 @@
+outs:
+- md5: 9a0df9cb9a139b13e7dbc9447774621e
+  size: 268733068
+  path: Daily_1x1_MODIS_C6_MCC_2018.nc
