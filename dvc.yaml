@@ -10,4 +10,15 @@ stages:
     outs:
     - ../data/result/patterns_along_trajectories_MCC.pq
     - ../data/result/patterns_along_trajectories_SGFF.pq
+  plot_patterns_along_traj_all_datasets:
+    cmd: python patterns_along_trajectory_alldatasets.py
+    wdir: analysis
+    deps:
+    - ../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc
+    - ../data/result/patterns_along_trajectories_MCC.pq
+    - ../data/result/patterns_along_trajectories_SGFF.pq
     - ../data/result/patterns_along_trajectories_MEASURES.pq
+    outs:
+    - ../figures/patterns_along_trajectory_SGFF.pdf
+    - ../figures/patterns_along_trajectory_MEASURES.pdf
+    - ../figures/patterns_along_trajectory_MCC.pdf
