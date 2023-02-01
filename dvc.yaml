@@ -1,10 +1,13 @@
 stages:
-  patterns_along_traj:
-    cmd: python patterns_along_trajectory.py
+  get_patterns_along_traj:
+    cmd: python get_patterns_along_traj.py
     wdir: analysis
     deps:
     - ../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc
     - ../data/SGFF/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc
+    - ../data/MCC/Daily_1x1_MODIS_C6_MCC_2018.nc
+    - ../data/MEASURES/Daily_1x1_MEASURES_CLASS_2018.nc
     outs:
-    - ../data/result/patterns_along_trajectories.pq
-    - ../figures/patterns_along_trajectory.pdf
+    - ../data/result/patterns_along_trajectories_MCC.pq
+    - ../data/result/patterns_along_trajectories_SGFF.pq
+    - ../data/result/patterns_along_trajectories_MEASURES.pq

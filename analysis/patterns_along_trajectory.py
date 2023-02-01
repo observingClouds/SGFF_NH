@@ -41,6 +41,9 @@ fn_figure = "../figures/patterns_along_trajectory.pdf"
 threshold_count = 10
 testing = False  # run reduced datasample
 overwrite = False
+pattern_start_persistance = slice(
+    0, 1
+)  # how many timesteps does a pattern need to persist
 
 if os.path.exists(fn_pattern_at_traj) and overwrite is False:
     pattern_sequence = pd.read_parquet(fn_pattern_at_traj)
@@ -83,7 +86,7 @@ cmap_patterns = mc.ListedColormap(color_dict.values(), name="cmap_patterns")
 # when the patterns at time of initialization is given
 fig, axs = plt.subplots(2, 2, figsize=(8, 8), sharex=True)
 for p, pattern in enumerate(["Sugar", "Gravel", "Flowers", "Fish"]):
-    mask = starting_patterns[pattern] > threshold_count
+    mask = (starting_patterns[pattern] > threshold_count).groupby("trajectory").all()
     trajs_with_spec_pattern = mask.index.get_level_values(0)[mask]
     pattern_sequence.loc[trajs_with_spec_pattern].groupby("timestep").count().plot(
         ax=axs.flatten()[p], cmap=cmap_patterns

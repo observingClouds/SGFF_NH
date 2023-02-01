@@ -14,10 +14,10 @@ def get_patterns_along_traj(time_at_traj, lat_at_traj, lon_at_traj, pattern_ds):
                 tolerance=1,
             )["counts"].values
         except KeyError:
-            patterns_along_traj[t] = np.array([np.nan, np.nan, np.nan, np.nan])
+            patterns_along_traj[t] = np.array([np.nan] * len(pattern_ds["class"]))
     df = pd.DataFrame.from_dict(
         patterns_along_traj,
         orient="index",
-        columns=["Sugar", "Gravel", "Flowers", "Fish"],
+        columns=list(pattern_ds["class"].values),
     )
     return df
