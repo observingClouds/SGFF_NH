@@ -15,7 +15,6 @@
 
 # # Pattern classifications along trajectories
 
-import os
 
 ## Load packages
 import sys
@@ -32,46 +31,23 @@ sys.path.append("../src/helpers")
 import traj_helpers as th  # noqa: E402
 
 # Input
+fn_pattern_at_traj = "../data/result/patterns_along_trajectories_SGFF.pq"
 traj_fn = "../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc"
-class_fn = "../data/SGFF/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF.nc"
 # Output
-fn_pattern_at_traj = "../data/result/patterns_along_trajectories.pq"
-fn_figure = "../figures/patterns_along_trajectory.pdf"
+fn_figure = "../figures/patterns_along_trajectory_SGFF_allTimes.pdf"
 
-threshold_count = 10
-testing = False  # run reduced datasample
-overwrite = False
-pattern_start_persistance = slice(
-    0, 1
-)  # how many timesteps does a pattern need to persist
+threshold_count = 0
+include_no_class = True
+# which timesteps a pattern need to persist
+pattern_start_persistance = slice(0, 1)
 
-if os.path.exists(fn_pattern_at_traj) and overwrite is False:
-    pattern_sequence = pd.read_parquet(fn_pattern_at_traj)
-else:
-    # Reading trajectories
-    ds_traj = xr.open_dataset(traj_fn)
-    # Reading classifications
-    ds_class = xr.open_dataset(class_fn)
-    # Get classifications along trajectory
-    dfs = {}
-    for i, t in enumerate(tqdm.tqdm(ds_traj.trajectory_idx.values)):
-        traj = ds_traj.sel(trajectory_idx=t)
-        patterns = th.get_patterns_along_traj(
-            traj.time_at_traj, traj.lat_at_traj, traj.lon_at_traj, ds_class
-        )
-        dfs[t] = patterns
-        if testing and i == 3:
-            break
-    pattern_sequence = pd.concat(dfs).rename_axis(index=["trajectory", "timestep"])
-    if not os.path.exists(os.path.dirname(fn_pattern_at_traj)):
-        os.mkdir(os.path.dirname(fn_pattern_at_traj))
-    pattern_sequence.to_parquet(fn_pattern_at_traj)
+pattern_sequence = pd.read_parquet(fn_pattern_at_traj)
+pattern_sequence[pattern_sequence == 0] = np.nan
 
 ## Filter trajectories by starting/ending pattern
 starting_patterns = pattern_sequence.loc[
-    (slice(None), 0), :
+    (slice(None), pattern_start_persistance), :
 ]  # start is def. as init of backtrajectory
-ending_patterns = pattern_sequence.loc[(slice(None), 7), :]
 
 # Create colormap specific to patterns
 color_dict = {
@@ -91,8 +67,17 @@ for p, pattern in enumerate(["Sugar", "Gravel", "Flowers", "Fish"]):
     pattern_sequence.loc[trajs_with_spec_pattern].groupby("timestep").count().plot(
         ax=axs.flatten()[p], cmap=cmap_patterns
     )
+    if include_no_class:
+        np.isnan(pattern_sequence.loc[trajs_with_spec_pattern]).all(axis=1).groupby(
+            "timestep"
+        ).sum().plot(ax=axs.flatten()[p], color="grey")
     axs.flatten()[p].set_title(pattern)
     if p % 2 == 0:
         axs.flatten()[p].set_ylabel("N")
+    if p == 1:
+        lgd = axs.flatten()[p].legend(bbox_to_anchor=(1.1, 0), loc="lower left")
+    else:
+        lgd = axs.flatten()[p].legend()
+        lgd.remove()
 sns.despine()
 plt.savefig(fn_figure, bbox_inches="tight")

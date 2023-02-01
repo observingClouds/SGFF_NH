@@ -63,3 +63,16 @@ stages:
     - path: ../figures/patterns_along_trajectory_SGFF.pdf
       md5: b22eda043d8624da188d5932c423a1a7
       size: 19112
+  plot_patterns_along_traj_SGFF:
+    cmd: python patterns_along_trajectory.py
+    deps:
+    - path: ../data/ERA5/trajectories/Trajectories_back_ClassificationCenters_IR.nc
+      md5: dec7390e2ba1db4fd9da291db1363ff8
+      size: 6107971
+    - path: ../data/result/patterns_along_trajectories_SGFF.pq
+      md5: 2e7b90d96f16556b006fc2969b74929f
+      size: 93253
+    outs:
+    - path: ../figures/patterns_along_trajectory_SGFF_allTimes.pdf
+      md5: a60356780fed2467e1dc44a0a7818706
+      size: 14239
