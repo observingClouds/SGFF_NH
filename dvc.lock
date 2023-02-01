@@ -35,9 +35,6 @@ stages:
     - path: ../data/result/patterns_along_trajectories_MCC.pq
       md5: 15dceb6bdd49c85e62920ef7beb461ee
       size: 64923
-    - path: ../data/result/patterns_along_trajectories_MEASURES.pq
-      md5: 23e34ccd9a844b9372e9a5d7e119c188
-      size: 71626
     - path: ../data/result/patterns_along_trajectories_SGFF.pq
       md5: 2e7b90d96f16556b006fc2969b74929f
       size: 93253
