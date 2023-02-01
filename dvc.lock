@@ -55,13 +55,13 @@ stages:
       size: 93253
     outs:
     - path: ../figures/patterns_along_trajectory_MCC.pdf
-      md5: 8ca0973944f22b4c28216308b03b3a6f
+      md5: 7bd4412d1b0d88c9d9f5584f9126f643
       size: 18241
     - path: ../figures/patterns_along_trajectory_MEASURES.pdf
-      md5: 80c41a69f4e8f9d3f45bffa7bca4b8bc
+      md5: 5232f5a2fdb6345f04d5c3a77fd7dc72
       size: 19614
     - path: ../figures/patterns_along_trajectory_SGFF.pdf
-      md5: b22eda043d8624da188d5932c423a1a7
+      md5: 6709bb2d1196044c0f52f19e14eb4aaf
       size: 19112
   plot_patterns_along_traj_SGFF:
     cmd: python patterns_along_trajectory.py
