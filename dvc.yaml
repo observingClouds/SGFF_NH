@@ -10,6 +10,7 @@ stages:
     outs:
     - ../data/result/patterns_along_trajectories_MCC.pq
     - ../data/result/patterns_along_trajectories_SGFF.pq
+    - ../data/result/patterns_along_trajectories_MEASURES.pq
   plot_patterns_along_traj_all_datasets:
     cmd: python patterns_along_trajectory_alldatasets.py
     wdir: analysis
