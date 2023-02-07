@@ -48,24 +48,24 @@ stages:
       md5: dec7390e2ba1db4fd9da291db1363ff8
       size: 6107971
     - path: ../data/result/patterns_along_trajectories_MCC.pq
-      md5: 15dceb6bdd49c85e62920ef7beb461ee
-      size: 64923
+      md5: 89788ab7db179f59fc26469e4660e9a5
+      size: 65179
     - path: ../data/result/patterns_along_trajectories_MEASURES.pq
-      md5: 23e34ccd9a844b9372e9a5d7e119c188
-      size: 71626
+      md5: 6e3beb184f76b7994377a804ba695a1b
+      size: 71864
     - path: ../data/result/patterns_along_trajectories_SGFF.pq
       md5: 2e7b90d96f16556b006fc2969b74929f
       size: 93253
     outs:
     - path: ../figures/patterns_along_trajectory_MCC.pdf
-      md5: 461c760d5a1c777435b1399d8089d60a
-      size: 18086
+      md5: b04da8d6879a2923855c2897f07c93ac
+      size: 19389
     - path: ../figures/patterns_along_trajectory_MEASURES.pdf
-      md5: c70969b031365bdc9b6a8da5e8a45552
-      size: 19033
+      md5: 0797d9a75ac9d8c4a7878e55958bf875
+      size: 20381
     - path: ../figures/patterns_along_trajectory_SGFF.pdf
-      md5: d43f6fc50ac4260c47b3017ddbe637e6
-      size: 18200
+      md5: d7dca7ec609bd84e8ff53793d65c5cc4
+      size: 19493
   plot_patterns_along_traj_SGFF:
     cmd: python patterns_along_trajectory.py
     deps:
