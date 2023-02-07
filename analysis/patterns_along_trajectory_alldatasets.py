@@ -41,11 +41,18 @@ fn_figure = "../figures/patterns_along_trajectory_{ds}.pdf"
 
 threshold_count = 0
 pattern_start_persistance = slice(
-    0, 0
+    0, 1
 )  # how many timesteps does a pattern need to persist
 class_names = {
-    "MCC": ["MCC-1", "MCC-2", "MCC-3"],
-    "MEASURES": [f"MEASURES-{i+1:g}" for i in range(6)],
+    "MCC": ["Open MCC", "Closed MCC", "Cellular but Disorganized"],
+    "MEASURES": [
+        "Closed-cellular",
+        "Clustered Cu",
+        "Disorganized MCC",
+        "Open-cellular MCC",
+        "Solid Stratus",
+        "Suppressed Cu",
+    ],
     "SGFF": ["Sugar", "Gravel", "Flowers", "Fish"],
 }
 classification_datasets = {"SGFF": {}, "MCC": {}, "MEASURES": {}}
