@@ -34,8 +34,8 @@ ds_MCC = mdh.postprocess_classification_ds(ds_MCC)
 ds_MEASURES = mdh.postprocess_classification_ds(ds_MEASURES)
 ## Give the classes some names
 class_names = {
-    "MCC": ["MCC-1", "MCC-2", "MCC-3"],
-    "MEASURES": [f"MEASURES-{i+1:g}" for i in ds_MEASURES["class"].values],
+    "MCC": ["Open MCC", "Closed MCC", "Cellular but Disorganized"],
+    "MEASURES": ["Closed-cellular", "Clustered Cu", "Disorganized MCC", "Open-cellular MCC", "Solid Stratus", "Suppressed Cu"],
     "SGFF": ["Sugar", "Gravel", "Flowers", "Fish"],
 }
 ds_MCC["class"] = class_names["MCC"]
