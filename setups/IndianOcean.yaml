@@ -9,4 +9,4 @@ year_range: [2014,2015]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: /home/m/m300408/GitProjects/SGFF_NH/data/MODIS/Aqua_MODIS_IR/
+output_dir_images: /home/m/m300408/GitProjects/SGFF_NH/data/MODIS/Aqua_MODIS_IR/IndianOcean
