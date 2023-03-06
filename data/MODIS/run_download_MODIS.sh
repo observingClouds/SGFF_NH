@@ -9,8 +9,4 @@
 
 mamba activate covariability
 
-# # INFRARED IMAGES
-output_dir=Aqua_MODIS_IR
-mkdir -p $output_dir
-
-python image_download_MODIS.py --year_range [2003,2010] --months [1,2,3,4,5,6,7,8,9,10,11,12] --lon_range [-100,10] --lat_range [-10,55] --save_path $output_dir --satellite Aqua --var Brightness_Temp_Band31_Day --exist_skip True
+python image_download_MODIS.py --experiment $1
