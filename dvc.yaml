@@ -31,3 +31,8 @@ stages:
     - ../data/result/patterns_along_trajectories_SGFF.pq
     outs:
     - ../figures/patterns_along_trajectory_SGFF_allTimes.pdf
+  download_MODIS_IO:
+    cmd: bash run_download_MODIS.sh ../../setups/IndianOcean.yaml
+    wdir: data/MODIS
+    outs:
+    - ./Aqua_MODIS_IR/IndianOcean
