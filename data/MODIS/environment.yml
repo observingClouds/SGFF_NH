@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python
+  - fire
   - scikit-image
   - pillow
   - pandas
