@@ -1,0 +1,4 @@
+outs:
+- md5: e560adac027b12abceff4c486300014f
+  size: 146355584
+  path: resnet50_csv_11_inference_IR.h5
