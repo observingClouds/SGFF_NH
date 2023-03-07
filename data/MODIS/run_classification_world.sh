@@ -14,5 +14,5 @@
 
 source activate /home/m/m300408/.conda/envs/sgff
 
-python classification_world.py
+python classification_world.py $1
 

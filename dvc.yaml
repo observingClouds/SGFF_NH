@@ -36,4 +36,8 @@ stages:
     wdir: data/MODIS
     outs:
     - ./Aqua_MODIS_IR/IndianOcean
-    push: false
+  classify_MODIS_IO:
+    cmd: bash run_classification_world.sh ../../setups/IndianOcean.yaml
+    wdir: data/MODIS
+    outs:
+    - ../../data/SGFF/level0/

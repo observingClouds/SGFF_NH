@@ -1,3 +1,4 @@
+repository: /home/m/m300408/GitProjects/SGFF_NH
 domain:
         lat_min: -15
         lat_max: 15
@@ -9,4 +10,9 @@ year_range: [2014,2015]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: /home/m/m300408/GitProjects/SGFF_NH/data/MODIS/Aqua_MODIS_IR/IndianOcean
+output_dir_images: ${repository}/data/MODIS/Aqua_MODIS_IR/IndianOcean
+
+classification:
+        model: ${repository}/models/resnet50_csv_11_inference_IR.h5
+        classification_pkl_fmt: ${repository}/data/SGFF/level0/IR_{s1:04g}-{s2:04g}_IndianOcean.pkl
+        input_images_fmt: "${repository}/data/MODIS/Aqua_MODIS_IR/IndianOcean/Aqua_Brightness_Temp_Band31_Day*.jpeg"
