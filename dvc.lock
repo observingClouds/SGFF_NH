@@ -79,3 +79,10 @@ stages:
     - path: ../figures/patterns_along_trajectory_SGFF_allTimes.pdf
       md5: 2cbf4ff3b2a9fe611c28205f85a4aaa5
       size: 14239
+  download_MODIS_IO:
+    cmd: bash run_download_MODIS.sh ../../setups/IndianOcean.yaml
+    outs:
+    - path: ./Aqua_MODIS_IR/IndianOcean
+      md5: f7ba2af652077c3c2f7db3898778ecbb.dir
+      size: 34554789
+      nfiles: 14

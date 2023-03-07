@@ -36,3 +36,4 @@ stages:
     wdir: data/MODIS
     outs:
     - ./Aqua_MODIS_IR/IndianOcean
+    push: false
