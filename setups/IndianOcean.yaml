@@ -1,4 +1,5 @@
-repository: /home/m/m300408/GitProjects/SGFF_NH
+repository: /home/azureuser/SGFF_NH
+datastore: /mount/sgff/nfs
 domain:
         lat_min: -15
         lat_max: 15
@@ -6,11 +7,11 @@ domain:
         lon_max: 170
 
 months: [1,2,3,4,5,6,7,8,9,10,11,12]
-year_range: [2014,2015]
+year_range: [2003,2016]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: ${repository}/data/MODIS/Aqua_MODIS_IR/IndianOcean
+output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/IndianOcean
 
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
