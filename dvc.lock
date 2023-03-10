@@ -82,7 +82,7 @@ stages:
   download_MODIS_IO:
     cmd: bash run_download_MODIS.sh ../../setups/IndianOcean.yaml
     outs:
-    - path: ./Aqua_MODIS_IR/IndianOcean
-      md5: f7ba2af652077c3c2f7db3898778ecbb.dir
-      size: 34554789
-      nfiles: 14
+    - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/IndianOcean
+      md5: b9adfabf75219d672dae0157959eb4ee.dir
+      size: 11543864357
+      nfiles: 4744
