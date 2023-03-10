@@ -144,4 +144,4 @@ if __name__ == "__main__":
 
         df = pd.DataFrame.from_dict(result_dict, orient="index")
         df.head()
-        df.to_pickle(conf["classification"]["output_pkl_fmt"])
+        df.to_pickle(conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2))
