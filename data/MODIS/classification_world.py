@@ -130,12 +130,12 @@ if __name__ == "__main__":
     times = np.empty(len(files), dtype=dt.datetime)
     result_dict = {}
 
-    sub_ind = [0, 500, 1000, 1500, 2000, 2500, 3000]
+    sub_ind = [0, 10, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500]
     for s in range(1, len(sub_ind)):
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
         for f, file in enumerate(tqdm(files[s1:s2])):
-            time_str = file[-28:-20]
+            time_str = file[-27:-19]
             times[f] = dt.datetime.strptime(time_str, "%Y%m%d")
             boxes, labels, scores = get_retinanet_preds(model, file, 0.5, subset=True)
 

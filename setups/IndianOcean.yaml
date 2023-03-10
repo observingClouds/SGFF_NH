@@ -1,4 +1,4 @@
-repository: /home/azureuser/SGFF_NH
+repository: /home/azureuser/localfiles/SGFF_NH
 datastore: /mount/sgff/nfs
 domain:
         lat_min: -15
@@ -15,5 +15,5 @@ output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/IndianOcean
 
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
-        classification_pkl_fmt: ${repository}/data/SGFF/level0/IR_{s1:04g}-{s2:04g}_IndianOcean.pkl
-        input_images_fmt: "${repository}/data/MODIS/Aqua_MODIS_IR/IndianOcean/Aqua_Brightness_Temp_Band31_Day*.jpeg"
+        output_pkl_fmt: ${repository}/data/SGFF/level0/IR_{s1:04g}-{s2:04g}_IndianOcean.pkl
+        input_images_fmt: ${datastore}/data/MODIS/Aqua_MODIS_IR/IndianOcean/Aqua_Brightness_Temp_Band31_Day*.jpeg
