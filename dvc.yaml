@@ -77,6 +77,16 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
         cache: false
+  download_MODIS_TB:
+    cmd: echo "Download all MODIS Tropical Belt images"
+    wdir: data/MODIS
+    deps:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
 #  classify_MODIS_TB:
 #    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
 #    wdir: data/MODIS
