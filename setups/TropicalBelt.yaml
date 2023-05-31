@@ -4,10 +4,10 @@ domain:
         lat_min: -15
         lat_max: 15
         lon_min: -180
-        lon_max: 180
+        lon_max: -120
 
 months: [1,2,3,4,5,6,7,8,9,10,11,12]
-year_range: [2003,2016]
+year_range: [2015,2016]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
