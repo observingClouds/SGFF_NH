@@ -46,6 +46,12 @@ stages:
     wdir: data/MODIS
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+  download_MODIS_TB2:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt2.yaml
+    wdir: data/MODIS
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
+        cache: false
 #  classify_MODIS_TB:
 #    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
 #    wdir: data/MODIS
