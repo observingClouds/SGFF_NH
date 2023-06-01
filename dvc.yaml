@@ -40,7 +40,7 @@ stages:
     cmd: bash run_classification_world.sh ../../setups/IndianOcean.yaml
     wdir: data/MODIS
     outs:
-    - /mount/sgff/nfs/data/SGFF/level0/
+    - /mount/sgff/nfs/data/SGFF/level0/IO/
   download_MODIS_TB1:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt1.yaml
     wdir: data/MODIS
