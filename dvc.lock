@@ -88,46 +88,70 @@ stages:
       nfiles: 4744
   download_MODIS_TB1:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt1.yaml
+    deps:
+    - path: ../../setups/TropicalBelt1.yaml
+      md5: 01baf6e600256eab61a08fb5ff46b15a
+      size: 649
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
-      md5: c4ed1e221fabbfdf0a79d973502bbb50.dir
-      size: 413393333
-      nfiles: 365
+      md5: 9f57f7de4a6754392ba86324b75fcd7d.dir
+      size: 5075206179
+      nfiles: 5478
   download_MODIS_TB2:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt2.yaml
+    deps:
+    - path: ../../setups/TropicalBelt2.yaml
+      md5: 972a06264b8bbc7bd4b86abb15fdbde5
+      size: 648
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
-      md5: d657238709a619d42e7a8f1a2ce1e0f6.dir
-      size: 447105862
-      nfiles: 365
+      md5: f35222357b0377e3dfa226f0a58e3688.dir
+      size: 5885287661
+      nfiles: 5478
   download_MODIS_TB3:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt3.yaml
+    deps:
+    - path: ../../setups/TropicalBelt3.yaml
+      md5: d71ec8cd49ba7d2f48fbdff4d9e6409e
+      size: 645
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
-      md5: 4c2a157bf9f23f23cb4bec580d5496d9.dir
-      size: 425336336
-      nfiles: 365
+      md5: 404ad28d3025e621487251e784529b64.dir
+      size: 5917678189
+      nfiles: 5478
   download_MODIS_TB4:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt4.yaml
+    deps:
+    - path: ../../setups/TropicalBelt4.yaml
+      md5: 9f964023234d9ce2ef65731f27a2ce29
+      size: 644
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
-      md5: 6374399045c30919e10e9b7183a726ad.dir
-      size: 473346974
-      nfiles: 365
+      md5: 4e67847de3bbc350bbbafe5b8e1116fb.dir
+      size: 6595561588
+      nfiles: 5478
   download_MODIS_TB5:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt5.yaml
+    deps:
+    - path: ../../setups/TropicalBelt5.yaml
+      md5: fea67eab82713ba0af7a98ecda8fee54
+      size: 646
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
-      md5: fda5a793cc120e7b3346c0f7f0dfe092.dir
-      size: 463158703
-      nfiles: 365
+      md5: edc6f24ad8e1b40102003f4203f27cde.dir
+      size: 6433324980
+      nfiles: 5477
   download_MODIS_TB6:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt6.yaml
+    deps:
+    - path: ../../setups/TropicalBelt6.yaml
+      md5: 7d10b86145952e8acbc6eda29ba052c3
+      size: 647
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
-      md5: e854c237aa2275fdd6a2f1ad24b886d3.dir
-      size: 476633032
-      nfiles: 365
+      md5: 8bf55784cba80a79a876bd71aaba77fd.dir
+      size: 6688002820
+      nfiles: 5467
   download_MODIS_TB:
     cmd: echo "Download all MODIS Tropical Belt images"
     deps:
@@ -162,31 +186,31 @@ stages:
       /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6/
     deps:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
-      md5: c4ed1e221fabbfdf0a79d973502bbb50.dir
-      size: 413393333
-      nfiles: 365
+      md5: 9f57f7de4a6754392ba86324b75fcd7d.dir
+      size: 5075206179
+      nfiles: 5478
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
-      md5: d657238709a619d42e7a8f1a2ce1e0f6.dir
-      size: 447105862
-      nfiles: 365
+      md5: f35222357b0377e3dfa226f0a58e3688.dir
+      size: 5885287661
+      nfiles: 5478
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
-      md5: 4c2a157bf9f23f23cb4bec580d5496d9.dir
-      size: 425336336
-      nfiles: 365
+      md5: 404ad28d3025e621487251e784529b64.dir
+      size: 5917678189
+      nfiles: 5478
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
-      md5: 6374399045c30919e10e9b7183a726ad.dir
-      size: 473346974
-      nfiles: 365
+      md5: 4e67847de3bbc350bbbafe5b8e1116fb.dir
+      size: 6595561588
+      nfiles: 5478
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
-      md5: fda5a793cc120e7b3346c0f7f0dfe092.dir
-      size: 463158703
-      nfiles: 365
+      md5: edc6f24ad8e1b40102003f4203f27cde.dir
+      size: 6433324980
+      nfiles: 5477
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
-      md5: e854c237aa2275fdd6a2f1ad24b886d3.dir
-      size: 476633032
-      nfiles: 365
+      md5: 8bf55784cba80a79a876bd71aaba77fd.dir
+      size: 6688002820
+      nfiles: 5467
     outs:
     - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
-      md5: 69ffca9ad538fa9bc175767d46920f70.dir
-      size: 2702336517
-      nfiles: 365
+      md5: b9cb4888c1838dfce0359f570545d6a2.dir
+      size: 36537249650
+      nfiles: 5478
