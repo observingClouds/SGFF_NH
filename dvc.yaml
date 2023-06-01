@@ -112,8 +112,8 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
         cache: false
-#  classify_MODIS_TB:
-#    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
-#    wdir: data/MODIS
-#    outs:
-#    - /mount/sgff/nfs/data/SGFF/level0/
+  classify_MODIS_TB:
+    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
+    wdir: data/MODIS
+    outs:
+    - /mount/sgff/nfs/data/SGFF/level0/TB/
