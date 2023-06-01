@@ -130,7 +130,7 @@ if __name__ == "__main__":
     times = np.empty(len(files), dtype=dt.datetime)
     result_dict = {}
 
-    sub_ind = [0, 10, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500]
+    sub_ind = [0, 10, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500]
     for s in range(1, len(sub_ind)):
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
