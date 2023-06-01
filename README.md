@@ -21,3 +21,24 @@ or
 dvc repro patterns_along_traj
 ```
 to only reproduce specific steps which are listed in `dvc.yaml`
+
+
+## Potential issues
+
+### Error when running stage `stitch_images_TB`
+
+```
+convert-im6.q16: width or height exceeds limit `panorama-in.jpg' @ error/cache.c/OpenPixelCache/3802.
+```
+
+To solve it you will need to edit `/etc/ImageMagick-6/policy.xml` and increase the limit for memory, width, height and area. For example:
+
+```
+  <policy domain="resource" name="memory" value="8GiB"/>
+  <policy domain="resource" name="width" value="128KB"/>
+  <policy domain="resource" name="height" value="128KB"/>
+  <policy domain="resource" name="area" value="8GB"/>
+```
+
+source: https://www.guyrutenberg.com/tag/imagemagick/
+
