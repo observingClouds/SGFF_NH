@@ -12,7 +12,7 @@
 #SBATCH --mail-user=hauke.schulz@mpimet.mpg.de
 #SBATCH --mail-type=ALL
 
-source activate /home/m/m300408/.conda/envs/sgff
+source activate /home/azureuser/micromamba/envs/sgff
 
 python classification_world.py $1
 
