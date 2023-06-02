@@ -116,4 +116,5 @@ stages:
     cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
     wdir: data/MODIS
     outs:
-    - /mount/sgff/nfs/data/SGFF/level0/TB/
+    - /mount/sgff/nfs/data/SGFF/level0/TB/:
+        persist: true
