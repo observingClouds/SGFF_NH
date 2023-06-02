@@ -137,7 +137,7 @@ if __name__ == "__main__":
         output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2)
         if os.path.exists(output_pkl): continue
         for f, file in enumerate(tqdm(files[s1:s2])):
-            time_str = file[-27:-19]
+            time_str = file.split("_")[-4][-8:]
             times[f] = dt.datetime.strptime(time_str, "%Y%m%d")
             boxes, labels, scores = get_retinanet_preds(model, file, 0.5, subset=True)
 
