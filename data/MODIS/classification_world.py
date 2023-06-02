@@ -134,7 +134,7 @@ if __name__ == "__main__":
     for s in range(1, len(sub_ind)):
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
-        output_pkl = os.path.dirname(conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2))
+        output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2)
         if os.path.exists(output_pkl): continue
         for f, file in enumerate(tqdm(files[s1:s2])):
             time_str = file[-27:-19]
