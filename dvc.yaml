@@ -122,15 +122,15 @@ stages:
     - /home/azureuser/localfiles/SGFF_NH/data/SGFF/level0/TB/*.pkl:
         persist: true
   create_mask_TB:
-    cmd: python convert_pkl_to_zarr.py ../../setups/TropicalBelt.yaml
-    wdir: src/helpers/
+    cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
+    wdir: ./
     vars: 
-    - ../../setups/TropicalBelt.yaml
+    - setups/TropicalBelt.yaml
     outs:
-    - ../../${classification.output_zarr}
-    - ../../${classification.output_pkl_joint}
+    - ${classification.output_zarr}
+    - ${classification.output_pkl_joint}
     deps:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+    - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
   grid_mask_TB:
     cmd: python prepare_data_grid.py
     wdir: analysis
