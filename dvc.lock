@@ -221,3 +221,18 @@ stages:
       md5: fd04f3106e456975be1abe7aa9b23548.dir
       size: 19737185
       nfiles: 12
+  create_mask_TB:
+    cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
+    deps:
+    - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+      md5: b9cb4888c1838dfce0359f570545d6a2.dir
+      size: 36537249650
+      nfiles: 5478
+    outs:
+    - path: ./data/SGFF/level0/TB/joint/IR_TropicalBelt.pkl
+      md5: b172d4fdd00175ecf4b59a1f08fa38e1
+      size: 3407669
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
+      md5: 3d4b60ff41253a6e3b4396e35014bb39.dir
+      size: 1991456136
+      nfiles: 4433
