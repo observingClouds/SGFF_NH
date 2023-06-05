@@ -16,6 +16,6 @@ output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
         output_pkl_fmt: ${repository}/data/SGFF/level0/TB/IR_{s1:04g}-{s2:04g}_TropicalBelt.pkl
-        output_pkl_joint: ${repository}/data/SGFF/level0/TB/IR_TropicalBelt.pkl
-        output_zarr: ${repository}/data/SGFF/level1/TB/IR_TropicalBelt.zarr
+        output_pkl_joint: ./data/SGFF/level0/TB/IR_TropicalBelt.pkl
+        output_zarr: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
         input_images_fmt: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt/Aqua_Brightness_Temp_Band31_Day*.jpeg

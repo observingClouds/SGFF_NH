@@ -127,7 +127,7 @@ stages:
     vars: 
     - ../../setups/TropicalBelt.yaml
     outs:
-    - ${classification.output_zarr}
-    - ${classification.output_pkl_joint}
+    - ../../${classification.output_zarr}
+    - ../../${classification.output_pkl_joint}
     deps:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
