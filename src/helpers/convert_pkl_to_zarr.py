@@ -51,9 +51,7 @@ if __name__ == "__main__":
     df_all.head()
 
     if len(dataframes) > 1:
-        dfs_to_merge = np.array(np.arange(len(dataframes)), dtype=int)
-        df_all = pd.concat(np.array(dataframes)[dfs_to_merge]);
-        df_all.head()
+        df_all = dataframes[-1]
     else:
         df_all = dataframes[0]
 
