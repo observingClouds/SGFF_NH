@@ -150,6 +150,6 @@ if __name__ == "__main__":
         else:
             print(f"No labels found on {index}")
         mask[i,:,:,:] = o
-        times[i] = index
+        times[i] = idx_grp['index'].item()
 
     print("Zarr file written")
