@@ -41,7 +41,7 @@ ds_classifications_input = xr.open_zarr(fn_zarr)
 
 # Create file and calculate common boxes
 print("Create output file")
-nb_times = len(ds_classifications_input.dates)
+nb_times = len(ds_classifications_input.time)
 nb_lons = len(lon_center)
 nb_lats = len(lat_center)
 nb_patterns = len(ds_classifications_input.pattern)
@@ -128,8 +128,8 @@ else:
 
 
 print("Start actual calculation")
-for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
-    day_sel = ds_classifications_input.sel(dates=date)
+for d, date in enumerate(tqdm.tqdm(ds_classifications_input.time)):
+    day_sel = ds_classifications_input.sel(time=date)
 
     count[d, :, :, :] = (
         calculate_mean(day_sel.mask.fillna(0).astype(int)).compute().astype(float)
