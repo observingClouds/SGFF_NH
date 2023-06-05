@@ -141,7 +141,7 @@ if __name__ == "__main__":
         
         return out
 
-    for i, (index, idx_grp) in enumerate(tqdm(df_all.groupby('time'))):
+    for i, (index, idx_grp) in enumerate(tqdm(df_all.groupby(df_all.index.unique()))):
         o=np.zeros((nb_lons,nb_lats,nb_patterns), dtype=bool)
         create_mask(np.array([idx_grp['x'].values,
                                idx_grp['y'].values,
