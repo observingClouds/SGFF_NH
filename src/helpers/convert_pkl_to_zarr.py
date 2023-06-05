@@ -72,8 +72,8 @@ if __name__ == "__main__":
             c_=np.array([box[:,0] + box[:,2], box[:,1] + box[:,3]]).max(axis=1)
             c=np.array([c,c_]).max(axis=0)
 
-    nb_lats = np.int(np.ceil(c[1]))  # np.int(np.floor((df_all.y+df_all.h).max()))
-    nb_lons = np.int(np.ceil(c[0]))  # np.int(np.floor((df_all.x+df_all.w).max()))
+    nb_lats = int(np.ceil(c[1]))  # np.int(np.floor((df_all.y+df_all.h).max()))
+    nb_lons = int(np.ceil(c[0]))  # np.int(np.floor((df_all.x+df_all.w).max()))
     nb_patterns = 4
 
     store = zarr.DirectoryStore(output_file)
@@ -142,7 +142,7 @@ if __name__ == "__main__":
         return out
 
     for i, (index, idx_grp) in enumerate(tqdm(df_all.groupby('time'))):
-        o=np.zeros((nb_lons,nb_lats,nb_patterns), dtype=np.bool)
+        o=np.zeros((nb_lons,nb_lats,nb_patterns), dtype=bool)
         create_mask(np.array([idx_grp['x'].values,
                                idx_grp['y'].values,
                                idx_grp['w'].values,
