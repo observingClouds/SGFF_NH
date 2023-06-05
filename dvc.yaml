@@ -119,7 +119,7 @@ stages:
     cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
     wdir: data/MODIS
     outs:
-    - /home/azureuser/localfiles/SGFF_NH/data/SGFF/level0/TB/:
+    - /home/azureuser/localfiles/SGFF_NH/data/SGFF/level0/TB/*.pkl:
         persist: true
   create_mask_TB:
     cmd: python convert_pkl_to_zarr.py ../../setups/TropicalBelt.yaml
