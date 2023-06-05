@@ -132,11 +132,11 @@ stages:
     deps:
     - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
   grid_mask_TB:
-    cmd: python prepare_data_grid.py
-    wdir: analysis
+    cmd: python analysis/prepare_data_grid.py
+    wdir: ./
     vars:
-    - ../setups/TropicalBelt.yaml
+    - setups/TropicalBelt.yaml
     outs:
-    - ../data/SGFF/level2/TB/
+    - data/SGFF/level2/TB/
     deps:
-    - ../../${classification.output_zarr}
+    - ${classification.output_zarr}
