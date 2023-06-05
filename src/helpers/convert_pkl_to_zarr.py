@@ -17,17 +17,17 @@ def get_setup(
 ):
     conf = OmegaConf.load(conf_file)
 
-    lon1 = OmegaConf.select(conf, "domain.lon_min", default=lon_range[0])
-    lon2 = OmegaConf.select(conf, "domain.lon_max", default=lon_range[1])
-    lat1 = OmegaConf.select(conf, "domain.lat_min", default=lat_range[0])
-    lat2 = OmegaConf.select(conf, "domain.lat_max", default=lat_range[1])
+    lon1 = conf["domain"]["lon_min"]
+    lon2 = conf["domain"]["lon_max"]
+    lat1 = conf["domain"]["lat_min"]
+    lat2 = conf["domain"]["lat_max"]
     dlon = lon2 - lon1
     dlat = lat2 - lat1
     
     domain = [lat1, lat2, lon1, lon2]
 
     merged_pickle_out = conf['classification']['output_pkl_joint']
-    label_file_fmt = conf['classification']['output_pkl_fmt'].format(s1='*',s2='*')
+    label_file_fmt = conf['classification']['output_pkl_fmt'].replace("{s1:04g}-{s2:04g}","*")
     output_file = conf['classification']['output_zarr']
 
     return domain, merged_pickle_out, label_file_fmt, output_file
