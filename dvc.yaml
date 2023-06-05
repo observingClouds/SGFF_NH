@@ -131,3 +131,12 @@ stages:
     - ../../${classification.output_pkl_joint}
     deps:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+  grid_mask_TB:
+    cmd: python prepare_grid_data.py
+    wdir: analysis
+    vars:
+    - ../setups/TropicalBelt.yaml
+    outs:
+    - ../data/SGFF/level2/TB/
+    deps:
+    - ../../${classification.output_zarr}
