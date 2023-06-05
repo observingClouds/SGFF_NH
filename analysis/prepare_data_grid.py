@@ -12,13 +12,13 @@ import zarr
 print("Finished loading modules")
 
 overwrite = False
-fn_zarr = "../data/MODIS/IR_worldview_everyotherline_NH_daily_pattern_distribution_2003-2009.zarr"
-output_file = "../data/MODIS/Daily_1x1_MODIS-IR_NorthAtlantic_SGFF_2003-2009.zarr"
+fn_zarr = "../data/SGFF/level1/TB/IR_TropicalBelt.zarr"
+output_file = "../data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF_2001-2015.zarr"
 
-lat_bins = np.arange(-10, 55, 1)
-lat_center = np.arange(-9.5, 54.5, 1)
-lon_bins = np.arange(-100, 10, 1)
-lon_center = np.arange(-99.5, 9.5, 1)
+lat_bins = np.arange(-16.25, 16.25, 2.5)
+lat_center = np.arange(-15, 15, 2.5)
+lon_bins = np.arange(-178.75, 178.75, 1)
+lon_center = np.arange(-177.5, 177.5, 2.5)
 
 label_map = {"Sugar": 0, "Fish": 1, "Flowers": 2, "Flower": 2, "Gravel": 3}
 label_map_rv = {0: "Sugar", 3: "Gravel", 2: "Flowers", 1: "Fish"}
@@ -100,7 +100,7 @@ else:
     count.attrs["_ARRAY_DIMENSIONS"] = ("time", "longitude", "latitude", "class")
     count.attrs[
         "description"
-    ] = "number of classifications of particular pattern within 1 deg x 1 deg"
+    ] = "number of classifications of particular pattern within 2.5 deg x 2.5 deg"
     lons.attrs["_ARRAY_DIMENSIONS"] = "longitude"
     lons.attrs["standard_name"] = "longitude"
     lons.attrs["units"] = "degree_east"
@@ -116,10 +116,10 @@ else:
     # Global attributes
     root_grp.attrs[
         "title"
-    ] = "IR neural network meso-scale cloud pattern classifications (North Atlantic)"
+    ] = "IR neural network meso-scale cloud pattern classifications (TropicalBelt)"
     root_grp.attrs["description"] = "NN detections of meso-scale cloud patterns"
-    root_grp.attrs["author"] = "Hauke Schulz (hauke.schulz@mpimet.mpg.de)"
-    root_grp.attrs["institute"] = "Max Planck Institut für Meteorologie, Germany"
+    root_grp.attrs["author"] = "Hauke Schulz (haschulz@uw.edu)"
+    root_grp.attrs["institute"] = "University of Washington, USA"
     root_grp.attrs["created_on"] = dt.datetime.now().strftime("%Y-%m-%d %H:%M UTC")
     root_grp.attrs[
         "history"
@@ -129,8 +129,6 @@ else:
 
 print("Start actual calculation")
 for d, date in enumerate(tqdm.tqdm(ds_classifications_input.dates)):
-    if d <= 1340:
-        continue
     day_sel = ds_classifications_input.sel(dates=date)
 
     count[d, :, :, :] = (
