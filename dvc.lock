@@ -214,3 +214,10 @@ stages:
       md5: b9cb4888c1838dfce0359f570545d6a2.dir
       size: 36537249650
       nfiles: 5478
+  classify_MODIS_TB:
+    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
+    outs:
+    - path: ../SGFF/level0/TB
+      md5: fd04f3106e456975be1abe7aa9b23548.dir
+      size: 19737185
+      nfiles: 12
