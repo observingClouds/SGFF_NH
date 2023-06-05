@@ -155,3 +155,97 @@ if __name__ == "__main__":
         times[i] = index
 
     print("Zarr file written")
+
+    df = pd.read_pickle(resnet_classifications)  
+
+    for label, grp_labels in df.groupby('labels'):
+        print('label: %s (%i cases)' % (label, len(grp_labels)))
+
+
+    result_dicts = {}
+    for l in tqdm.trange(len(df.index)):
+        classification = df.iloc[l]
+        box = [df.x[l], df.y[l], df.w[l], df.h[l]]
+        x0, y0, x1, y1 = hc.get_image_coords(box)
+        
+    #     print('Filename: {}'.format(df.file[l]))
+        center = hc.calc_center_latlon(box)
+        file_info_df = decode_filepath(df.file[l].replace('TrueColor','').replace('Brightness_Temp_Band31_Day','BrightnessTempBand31Day_'))
+        lon0, lat0, lon1, lat1 = convert_pixelCoords2latlonCoords(np.array([[x0, y0, x1, y1]]).astype('int'), regions=[file_info_df.region.iloc[0]])
+        overpass_time = hc.retrieve_overpass_time(file_info_df.date.iloc[0], center, path_tle=path_tle)
+        if isinstance(overpass_time, dt.datetime):
+            overpass_time = date2num(overpass_time, "seconds since 1970-01-01 00:00:00 UTC")
+        result_dict = {'region': file_info_df.region.iloc[0],
+                       'overpass_time': overpass_time,
+                       'overpass_sat_name': file_info_df.satellite.iloc[0],
+                       'label_type': df.labels[l],
+                       'label_NN_score': df.score[l],
+                       'label_imgx': df.x[l],
+                       'label_imgy': df.y[l],
+                       'label_imgw': df.w[l],
+                       'label_imgh': df.h[l],
+                       'label_imgx0': x0,
+                       'label_imgx1': x1,
+                       'label_imgy0': y0,
+                       'label_imgy1': y1,
+                       'label_lat0': float(lat0),
+                       'label_lon0': float(lon0),
+                       'label_lat1': float(lat1),
+                       'label_lon1': float(lon1),
+                       'label_center_lat': center[0],
+                       'label_center_lon': center[1],
+                       'filename': df.file[l]
+                      }
+        result_dicts[l] = result_dict
+
+    result_df = pd.DataFrame.from_dict(result_dicts, orient='index'); result_df.head()
+
+    # Add metadata
+    result_ds = xr.Dataset.from_dataframe(result_df)
+
+    #Global attributes
+    result_ds.attrs['title'] = 'Meso-scale cloud classifications of a neural network'
+    result_ds.attrs['author'] = 'Hauke Schulz (haschulz@uw.edu)'
+    result_ds.attrs['source'] = resnet_classifications
+    result_ds.attrs['created_date'] = dt.datetime.now().strftime('%Y/%m/%d %H:%M UTC')
+    result_ds.attrs['created_with'] = __file__
+    result_ds.attrs['python_version'] = 'python: {}; numpy: {}, xarray: {}, pandas: {}'.format(sys.version,
+                                                    np.__version__, xr.__version__, pd.__version__)
+
+    #Variable attributes
+    result_ds.region.attrs['description'] = 'number of original region that were used during training'
+    result_ds.region.attrs['valid_range'] = (1, 3)
+
+    result_ds.overpass_time.attrs['description'] = 'time the satellite has passed over the center of the classification'
+    result_ds.overpass_time.attrs['units'] = 'seconds since 1970-01-01 00:00:00 UTC'
+    result_ds.overpass_time.attrs['calendar'] = 'standard'
+
+
+    result_ds.overpass_sat_name.attrs['description'] = 'name of satellite'
+
+    result_ds.label_type.attrs['description'] = 'type of detected mesoscale organization'
+    result_ds.label_type.attrs['valid_values'] = 'sugar gravel flower fish'
+
+    result_ds.label_NN_score.attrs['description'] = 'confidence score of the NN that the label_type is correct'
+
+    result_ds.label_imgx.attrs['description'] = 'position of label-box on original image in the format (x,y,w,h)(x)'
+    result_ds.label_imgy.attrs['description'] = 'position of label-box on original image in the format (x,y,w,h) (y)'
+    result_ds.label_imgw.attrs['description'] = 'position of label-box on original image in the format (x,y,w,h) (width)'
+    result_ds.label_imgh.attrs['description'] = 'position of label-box on original image in the format (x,y,w,h) (height)'
+    result_ds.label_imgx0.attrs['description'] = 'position of label-box on original image in the format (x0,y0,x1,y1) (x0)'
+    result_ds.label_imgy0.attrs['description'] = 'position of label-box on original image in the format (x0,y0,x1,y1) (y0)'
+    result_ds.label_imgx1.attrs['description'] = 'position of label-box on original image in the format (x0,y0,x1,y1) (x1)'
+    result_ds.label_imgy1.attrs['description'] = 'position of label-box on original image in the format (x0,y0,x1,y1) (y1)'
+    result_ds.label_lat0.attrs['description'] = 'geographic position of label-box (lat0)'
+    result_ds.label_lon0.attrs['description'] = 'geographic position of label-box (lon0)'
+    result_ds.label_lat1.attrs['description'] = 'geographic position of label-box (lat1)'
+    result_ds.label_lon1.attrs['description'] = 'geographic position of label-box (lon1)'
+    result_ds.label_center_lat.attrs['description'] = 'geographical center of label (latitude)'
+    result_ds.label_center_lon.attrs['description'] = 'geographical center of label (longitude)'
+
+    result_ds.filename.attrs['description'] = 'image filename'
+
+    for var in result_ds.data_vars:
+        result_ds[var].encoding['zlib'] = True
+
+    result_ds.to_netcdf(file_classification_netCDF)
