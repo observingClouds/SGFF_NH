@@ -132,7 +132,7 @@ stages:
     deps:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
   grid_mask_TB:
-    cmd: python prepare_grid_data.py
+    cmd: python prepare_data_grid.py
     wdir: analysis
     vars:
     - ../setups/TropicalBelt.yaml
