@@ -7,7 +7,6 @@ import xarray as xr
 import zarr
 import sys
 
-import skimage
 from tqdm import tqdm, trange
 
 import fire
