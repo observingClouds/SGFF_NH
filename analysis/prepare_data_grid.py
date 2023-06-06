@@ -20,8 +20,8 @@ lat_center = np.arange(-15, 15, 2.5)
 lon_bins = np.arange(-178.75, 178.75, 2.5)
 lon_center = np.arange(-177.5, 177.5, 2.5)
 
-label_map = {"Sugar": 0, "Fish": 1, "Flowers": 2, "Flower": 2, "Gravel": 3}
-label_map_rv = {0: "Sugar", 3: "Gravel", 2: "Flowers", 1: "Fish"}
+label_map = {"Sugar": 0, "Fish": 3, "Flowers": 2, "Flower": 2, "Gravel": 1}
+label_map_rv = {0: "Sugar", 1: "Gravel", 2: "Flowers", 3: "Fish"}
 
 
 def calculate_mean(da):
