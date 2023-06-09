@@ -14,5 +14,5 @@
 
 source activate /home/azureuser/micromamba/envs/sgff
 
-python classification_world.py $1
+python ./data/MODIS/classification_world.py $1
 

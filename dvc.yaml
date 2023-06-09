@@ -116,10 +116,10 @@ stages:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
         cache: false
   classify_MODIS_TB:
-    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
-    wdir: data/MODIS
+    cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
+    wdir: ./
     outs:
-    - /home/azureuser/localfiles/SGFF_NH/data/SGFF/level0/TB/*.pkl:
+    - ./data/SGFF/level0/TB/*.pkl:
         persist: true
   create_mask_TB:
     cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
