@@ -21,8 +21,6 @@ def get_setup(
     lon2 = conf["domain"]["lon_max"]
     lat1 = conf["domain"]["lat_min"]
     lat2 = conf["domain"]["lat_max"]
-    dlon = lon2 - lon1
-    dlat = lat2 - lat1
     
     domain = [lat1, lat2, lon1, lon2]
 
