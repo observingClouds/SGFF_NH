@@ -103,7 +103,7 @@ def read_input(experiment):
 
 if __name__ == "__main__":
     conf = fire.Fire(read_input)
-
+    overwrite = True
     # use this environment flag to change which GPU to use
     os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
         output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2)
-        if os.path.exists(output_pkl): continue
+        if os.path.exists(output_pkl) and overwrite is False: continue
         for f, file in enumerate(tqdm(files[s1:s2])):
             time_str = file.split("_")[-4][-8:]
             times[f] = dt.datetime.strptime(time_str, "%Y%m%d")
