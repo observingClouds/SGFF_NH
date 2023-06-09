@@ -52,18 +52,24 @@ def get_retinanet_preds(
     boxes_all = []
     scores_all = []
     labels_all = []
+    window = np.array([window_lat_extend, window_lon_extend, 3])
+    block = np.array([block_lat_extend, block_lon_extend, 3])
+    assert np.all(
+        (np.shape(image) - block) % window == 0
+    ), f"Window size, block size and image size do not fit (image: {np.shape(image)} block: {block}, window: {window})"
     if subset:
         # Split image in smaller portions
         try:
             if method == "blocks":
                 image_blocks = skimage.util.view_as_blocks(
-                    image, (block_lat_extend, block_lon_extend, 3)
+                    image,
+                    block,
                 )
             elif method == "windows":
                 image_blocks = skimage.util.view_as_windows(
                     image,
-                    (block_lat_extend, block_lon_extend, 3),
-                    (window_lat_extend, window_lon_extend, 3),
+                    block,
+                    window,
                 )
         except ValueError:
             print("Shape of image is ", np.shape(image))
@@ -117,6 +123,11 @@ if __name__ == "__main__":
         i: l for i, l in enumerate(["Flower", "Fish", "Gravel", "Sugar"])
     }
 
+    block_lat_extend = conf["classification"]["classification_window_size"][0]
+    block_lon_extend = conf["classification"]["classification_window_size"][1]
+    window_lat_extend = conf["classification"]["classification_window_increment"][0]
+    window_lon_extend = conf["classification"]["classification_window_increment"][1]
+
     files = sorted(glob(conf["classification"]["input_images_fmt"]))
 
     print("Files to process: ", len(files))
@@ -134,12 +145,22 @@ if __name__ == "__main__":
     for s in range(1, len(sub_ind)):
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
-        output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1,s2=s2)
-        if os.path.exists(output_pkl) and overwrite is False: continue
+        output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1, s2=s2)
+        if os.path.exists(output_pkl) and overwrite is False:
+            continue
         for f, file in enumerate(tqdm(files[s1:s2])):
             time_str = file.split("_")[-4][-8:]
             times[f] = dt.datetime.strptime(time_str, "%Y%m%d")
-            boxes, labels, scores = get_retinanet_preds(model, file, 0.5, subset=True)
+            boxes, labels, scores = get_retinanet_preds(
+                model,
+                file,
+                0.5,
+                subset=True,
+                block_lat_extend=block_lat_extend,
+                block_lon_extend=block_lon_extend,
+                window_lat_extend=window_lat_extend,
+                window_lon_extend=window_lon_extend,
+            )
 
             result_dict[times[f]] = {"boxes": boxes, "labels": labels, "scores": scores}
         #     out[f,:,:,:] = create_mask(boxes, labels, out[f,:,:,:])
@@ -147,5 +168,5 @@ if __name__ == "__main__":
         df = pd.DataFrame.from_dict(result_dict, orient="index")
         df.head()
         if not os.path.exists(os.path.dirname(output_pkl)):
-                os.makedirs(os.path.dirname(output_pkl))
+            os.makedirs(os.path.dirname(output_pkl))
         df.to_pickle(output_pkl)
