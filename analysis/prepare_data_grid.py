@@ -13,7 +13,9 @@ print("Finished loading modules")
 
 overwrite = False
 fn_zarr = "./data/SGFF/level1/TB/IR_TropicalBelt.zarr"
-output_file = "./data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF_2001-2015.zarr"
+output_file = (
+    "./data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF_2001-2015.zarr"
+)
 
 lat_bins = np.arange(-16.25, 16.25, 2.5)
 lat_center = np.arange(-15, 15, 2.5)
