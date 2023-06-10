@@ -150,4 +150,5 @@ if __name__ == "__main__":
         mask[i,:,:,:] = o
         times[i] = idx_grp['index'].item()
 
+    zarr.consolidate_metadata(store)
     print("Zarr file written")
