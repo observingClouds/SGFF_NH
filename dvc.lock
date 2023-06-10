@@ -230,9 +230,9 @@ stages:
       nfiles: 5478
     outs:
     - path: ./data/SGFF/level0/TB/joint/IR_TropicalBelt.pkl
-      md5: b172d4fdd00175ecf4b59a1f08fa38e1
-      size: 3407669
+      md5: 7ce6ababd4e7784fe035a7b4e6f7b8b8
+      size: 6666097
     - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
-      md5: 3d4b60ff41253a6e3b4396e35014bb39.dir
-      size: 1991456136
-      nfiles: 4433
+      md5: 82d22c1aced1f1c0e9f52054089bc934.dir
+      size: 2655101286
+      nfiles: 4933
