@@ -51,6 +51,7 @@ if os.path.exists(output_file) and not overwrite:
     root_grp = zarr.open(output_file)
     count = root_grp["counts"]
     times = root_grp["time"]
+    store = root_grp.store
 else:
     print("File will be newly created.")
     store = zarr.DirectoryStore(output_file)
@@ -135,3 +136,5 @@ for d, date in enumerate(tqdm.tqdm(ds_classifications_input.time)):
         calculate_mean(day_sel.mask.fillna(0).astype(int)).compute().astype(float)
     )
     times[d] = date.values.astype("<M8[ns]")
+
+zarr.consolidate_metadata(store)
