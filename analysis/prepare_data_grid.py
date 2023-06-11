@@ -8,7 +8,6 @@ import numpy as np
 import tqdm
 import xarray as xr
 import zarr
-from dask.distributed import Client, LocalCluster
 
 print("Finished loading modules")
 
@@ -40,12 +39,7 @@ def calculate_mean(da):
 
 
 if __name__ == "__main__":
-    with dask.config.set({"distributed.scheduler.worker-saturation": 1}):
-        cluster = LocalCluster()
-        client = Client(cluster)
-    print(client)
-
-    ds_classifications_input = xr.open_zarr(fn_zarr, chunks={"time": 100})
+    ds_classifications_input = xr.open_zarr(fn_zarr)
 
     # Create file and calculate common boxes
     print("Create output file")
@@ -136,8 +130,13 @@ if __name__ == "__main__":
         root_grp.attrs["python_version"] = f"{sys.version}"
 
     print("Start actual calculation")
+    slice_size = 1
     mean = calculate_mean(ds_classifications_input.mask)
-    count[:, :, :, :] = mean.values
-    times[:] = mean.time.values
+    for d in tqdm.tqdm(range(len(mean.time))):
+        count[d : d + slice_size, :, :, :] = mean.isel(
+            time=slice(d, d + slice_size)
+        ).values
+        times[d : d + slice_size] = mean.isel(time=slice(d, d + slice_size)).time.values
+        d += slice_size
 
     zarr.consolidate_metadata(store)
