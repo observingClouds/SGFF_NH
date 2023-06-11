@@ -71,6 +71,7 @@ if __name__ == "__main__":
             shape=(nb_times),
             chunks=(nb_times),
             dtype="<M8[ns]",
+            fill_Value=None,
             compressor=zarr.Zlib(level=1),
         )
         lats = root_grp.create_dataset(
@@ -78,6 +79,7 @@ if __name__ == "__main__":
             shape=(nb_lats),
             chunks=(nb_lats),
             dtype=float,
+            fill_value=None,
             compressor=zarr.Zlib(level=1),
         )
         lons = root_grp.create_dataset(
@@ -85,6 +87,7 @@ if __name__ == "__main__":
             shape=(nb_lons),
             chunks=(nb_lons),
             dtype=float,
+            fill_value=None,
             compressor=zarr.Zlib(level=1),
         )
         patterns = root_grp.create_dataset(
@@ -92,6 +95,7 @@ if __name__ == "__main__":
             shape=(nb_patterns),
             chunks=(nb_patterns),
             dtype=str,
+            fill_value=None,
             compressor=zarr.Zlib(level=1),
         )
 
