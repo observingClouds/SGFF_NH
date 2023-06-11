@@ -17,10 +17,11 @@ output_file = (
     "./data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF_2001-2015.zarr"
 )
 
-lat_bins = np.arange(-16.25, 16.25, 2.5)
-lat_center = np.arange(-15, 15, 2.5)
-lon_bins = np.arange(-178.75, 178.75, 2.5)
-lon_center = np.arange(-177.5, 177.5, 2.5)
+grid_spacing = 2.5
+lat_bins = np.arange(-16.25, 16.25 + grid_spacing, grid_spacing)
+lat_center = np.arange(-15, 15 + grid_spacing, grid_spacing)
+lon_bins = np.arange(-178.75, 178.75 + grid_spacing, grid_spacing)
+lon_center = np.arange(-177.5, 177.5 + grid_spacing, grid_spacing)
 
 label_map = {"Sugar": 0, "Fish": 3, "Flowers": 2, "Flower": 2, "Gravel": 1}
 label_map_rv = {0: "Sugar", 1: "Gravel", 2: "Flowers", 3: "Fish"}
