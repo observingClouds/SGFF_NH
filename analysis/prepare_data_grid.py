@@ -71,7 +71,7 @@ if __name__ == "__main__":
             shape=(nb_times),
             chunks=(nb_times),
             dtype="<M8[ns]",
-            fill_Value=None,
+            fill_value=None,
             compressor=zarr.Zlib(level=1),
         )
         lats = root_grp.create_dataset(
