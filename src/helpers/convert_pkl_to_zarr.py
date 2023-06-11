@@ -80,6 +80,7 @@ if __name__ == "__main__":
         shape=(nb_times, nb_lons, nb_lats, nb_patterns),
         chunks=(1, nb_lons, nb_lats, nb_patterns),
         dtype=bool,
+        fill_value=None,
         compressor=zarr.Zlib(level=1),
     )
     times = root_grp.create_dataset(
