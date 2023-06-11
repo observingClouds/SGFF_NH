@@ -236,3 +236,15 @@ stages:
       md5: 8c6c3b915250e0ed7de8c07995317281.dir
       size: 2655104958
       nfiles: 4934
+  grid_mask_TB:
+    cmd: python analysis/prepare_data_grid.py
+    deps:
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
+      md5: 8c6c3b915250e0ed7de8c07995317281.dir
+      size: 2655104958
+      nfiles: 4934
+    outs:
+    - path: data/SGFF/level2/TB/
+      md5: bc3cb42c6cd4532f7113a651a2ad0d8a.dir
+      size: 5856740
+      nfiles: 4934
