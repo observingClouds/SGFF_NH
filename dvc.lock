@@ -245,6 +245,6 @@ stages:
       nfiles: 4934
     outs:
     - path: data/SGFF/level2/TB/
-      md5: bc3cb42c6cd4532f7113a651a2ad0d8a.dir
-      size: 5856740
+      md5: d3ed3b893fe4ac322e344a8b438c8b5e.dir
+      size: 6248012
       nfiles: 4934
