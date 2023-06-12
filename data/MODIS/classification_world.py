@@ -142,7 +142,7 @@ if __name__ == "__main__":
     result_dict = {}
 
     sub_ind = [0, 10]
-    sub_ind.append([np.arange(10, (len(times) - 10) + 500, 500)])
+    sub_ind.extend(np.arange(10, (len(times) - 10) + 500, 500))
     for s in range(1, len(sub_ind)):
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
