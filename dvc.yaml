@@ -49,6 +49,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1:
         cache: false
+        persist: true
   download_MODIS_TB2:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt2.yaml
     wdir: data/MODIS
@@ -57,6 +58,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
         cache: false
+        persist: true
   download_MODIS_TB3:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt3.yaml
     wdir: data/MODIS
@@ -65,6 +67,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3:
         cache: false
+        persist: true
   download_MODIS_TB4:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt4.yaml
     wdir: data/MODIS
@@ -73,6 +76,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4:
         cache: false
+        persist: true
   download_MODIS_TB5:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt5.yaml
     wdir: data/MODIS
@@ -81,6 +85,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5:
         cache: false
+        persist: true
   download_MODIS_TB6:
     cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt6.yaml
     wdir: data/MODIS
@@ -89,6 +94,7 @@ stages:
     outs:
     - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
         cache: false
+        persist: true
   download_MODIS_TB:
     cmd: echo "Download all MODIS Tropical Belt images"
     wdir: data/MODIS

@@ -74,7 +74,7 @@ def get_setup(
                 )
     return url_fmt, output_fmt, cfg
 
-def download_MODIS_img(url, output, exist_skip=False):
+def download_MODIS_img(url, output, exist_skip=True):
     if exist_skip and os.path.exists(output):
         print("Skip")
     else:
