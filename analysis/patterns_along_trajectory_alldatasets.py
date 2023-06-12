@@ -57,14 +57,16 @@ class_names = {
 }
 classification_datasets = {"SGFF": {}, "MCC": {}, "MEASURES": {}}
 
-for classification_ds in classification_datasets.keys():
-    ds_class = pd.read_parquet(fn_pattern_at_traj.format(ds=classification_ds))
-    classification_datasets[classification_ds] = ds_class
-
 # Select trajectoriess in year of interest
 ds_traj = xr.open_dataset(traj_fn)
 traj_mask = ds_traj.time_at_traj.sel(index=0).dt.year == 2018
 ds_traj_sel = ds_traj.sel(trajectory_idx=traj_mask.values)
+
+for classification_ds in classification_datasets.keys():
+    ds_class = pd.read_parquet(fn_pattern_at_traj.format(ds=classification_ds))
+    classification_datasets[classification_ds] = ds_class.loc[
+        (ds_traj_sel.trajectory_idx,)
+    ]
 
 # Combine sequences
 sequences = {}

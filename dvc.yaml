@@ -31,3 +31,118 @@ stages:
     - ../data/result/patterns_along_trajectories_SGFF.pq
     outs:
     - ../figures/patterns_along_trajectory_SGFF_allTimes.pdf
+  download_MODIS_IO:
+    cmd: bash run_download_MODIS.sh ../../setups/IndianOcean.yaml
+    wdir: data/MODIS
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/IndianOcean
+  classify_MODIS_IO:
+    cmd: bash run_classification_world.sh ../../setups/IndianOcean.yaml
+    wdir: data/MODIS
+    outs:
+    - /mount/sgff/nfs/data/SGFF/level0/IO/
+  download_MODIS_TB1:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt1.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt1.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1:
+        cache: false
+        persist: true
+  download_MODIS_TB2:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt2.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt2.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
+        cache: false
+        persist: true
+  download_MODIS_TB3:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt3.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt3.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3:
+        cache: false
+        persist: true
+  download_MODIS_TB4:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt4.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt4.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4:
+        cache: false
+        persist: true
+  download_MODIS_TB5:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt5.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt5.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5:
+        cache: false
+        persist: true
+  download_MODIS_TB6:
+    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt6.yaml
+    wdir: data/MODIS
+    deps:
+    - ../../setups/TropicalBelt6.yaml
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
+        cache: false
+        persist: true
+  download_MODIS_TB:
+    cmd: echo "Download all MODIS Tropical Belt images"
+    wdir: data/MODIS
+    deps:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
+  stitch_images_BT:
+    cmd: bash stitch_images.sh /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1/
+      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2/ /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3/
+      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4/ /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5/
+      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6/
+    wdir: data/MODIS
+    deps:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
+    outs:
+    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
+        cache: false
+  classify_MODIS_TB:
+    cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
+    wdir: ./
+    outs:
+    - ./data/SGFF/level0/TB/*.pkl:
+        persist: true
+  create_mask_TB:
+    cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
+    wdir: ./
+    vars: 
+    - setups/TropicalBelt.yaml
+    outs:
+    - ${classification.output_zarr}
+    - ${classification.output_pkl_joint}
+    deps:
+    - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+  grid_mask_TB:
+    cmd: python analysis/prepare_data_grid.py
+    wdir: ./
+    vars:
+    - setups/TropicalBelt.yaml
+    outs:
+    - data/SGFF/level2/TB/
+    deps:
+    - ${classification.output_zarr}
