@@ -7,7 +7,7 @@ domain:
         lon_max: -120
 
 months: [1,2,3,4,5,6,7,8,9,10,11,12]
-year_range: [2001,2016]
+year_range: [2001,2023]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
