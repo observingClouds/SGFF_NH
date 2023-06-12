@@ -48,7 +48,7 @@ def get_retinanet_preds(
         method describing how to subset images e.g. blocks or windows
     """
     image = read_image_bgr(fn)
-    image = preprocess_image(image)
+    image = preprocess_image(image[::2, ::2])
     boxes_all = []
     scores_all = []
     labels_all = []
