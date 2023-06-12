@@ -19,5 +19,5 @@ classification:
         output_pkl_joint: ./data/SGFF/level0/TB/joint/IR_TropicalBelt.pkl
         output_zarr: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
         input_images_fmt: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt/Aqua_Brightness_Temp_Band31_Day*.jpeg
-        classification_window_size: [500, 1000, 3]
-        classification_window_increment: [500, 500, 3]
+        classification_window_size: [1400, 2100, 3]
+        classification_window_increment: [400, 300, 3]
