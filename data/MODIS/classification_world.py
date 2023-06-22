@@ -137,13 +137,12 @@ if __name__ == "__main__":
     file_mask = np.array(file_sizes) > 2000000
     files = np.array(files)[file_mask]
 
-    # out = np.zeros((len(files), 18000, 7000, 4), dtype='bool')
     times = np.empty(len(files), dtype=dt.datetime)
-    result_dict = {}
 
     sub_ind = [0, 10]
     sub_ind.extend(np.arange(11, (len(times) - 10) + 500, 500))
     for s in range(1, len(sub_ind)):
+        result_dict = {}
         s1 = sub_ind[s - 1]
         s2 = sub_ind[s]
         output_pkl = conf["classification"]["output_pkl_fmt"].format(s1=s1, s2=s2)
@@ -164,7 +163,6 @@ if __name__ == "__main__":
             )
 
             result_dict[times[f]] = {"boxes": boxes, "labels": labels, "scores": scores}
-        #     out[f,:,:,:] = create_mask(boxes, labels, out[f,:,:,:])
 
         df = pd.DataFrame.from_dict(result_dict, orient="index")
         df.head()
