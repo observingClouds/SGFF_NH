@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python
+  - omegaconf
   - fire
   - scikit-image
   - pillow
