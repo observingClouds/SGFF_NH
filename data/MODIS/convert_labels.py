@@ -143,3 +143,6 @@ for i, index in enumerate(tqdm(df_all.index)):
     create_mask(df_all.loc[index]["boxes"], df_all.loc[index]["labels"], out=o)
     mask[i, :, :, :] = o
     dates[i] = index.to_datetime64()
+
+zarr.consolidate_metadata(store)
+store.close()
