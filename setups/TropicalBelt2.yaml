@@ -11,7 +11,7 @@ year_range: [2001,2024]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: ${datastore}/Aqua_MODIS_IR/TropicalBelt2
+output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
 
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
