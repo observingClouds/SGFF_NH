@@ -1,9 +1,6 @@
 vars:
   - paths:
       mount_point_data : ./
-  #- setups/TropicalBelt.yaml
-  - classification:
-      output_zarr: "/Users/haukeschulz/Documents/GitProjects/SGFF_NH/data/SGFF/level1/IR_TropicalBelt.zarr"
 stages:
   get_patterns_along_traj:
     cmd: python get_patterns_along_traj.py
@@ -130,12 +127,18 @@ stages:
     vars:
     - setups/TropicalBelt.yaml
     outs:
-    - ${classification.output_zarr}
+    - ${classification.output_zarr}/time
+    - ${classification.output_zarr}/latitude
+    - ${classification.output_zarr}/longitude
+    - ${classification.output_zarr}/pattern
+    - ${classification.output_zarr}/mask
     - ${classification.output_pkl_joint}
     deps:
     - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
   mask_classifications:
     cmd: python data/MODIS/mask_footprint.py setups/TropicalBelt.yaml
+    vars:
+    - setups/TropicalBelt.yaml
     deps:
     - data/MODIS/mask_footprint.py
     - ${classification.output_zarr}/time
