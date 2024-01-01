@@ -5,10 +5,7 @@
 #r=`comm --nocheck-order -12 <(split_chars "filename_1_22") <(split_chars "filename_1_23")`
 #echo $r | tr -d " "
 
-OUTDIR=TropicalBelt
-
-cd $1 # Assuming all given directories have the same parent directory
-cd ..
+OUTDIR=./data/MODIS/Aqua_MODIS_IR/TropicalBelt
 
 mkdir $OUTDIR
 

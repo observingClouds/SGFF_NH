@@ -1,23 +1,24 @@
-repository: /home/azureuser/localfiles/SGFF_NH
-datastore: /mount/sgff/nfs
+repository: ./
+datastore: ./
 domain:
         lat_min: -15
         lat_max: 15
         lon_min: -180
         lon_max: 180
 
-months: [1,2,3,4,5,6,7,8,9,10,11,12]
-year_range: [2001,2023]
+months: [12]
+year_range: [2015,2016]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+output_dir_images: ${datastore}/Aqua_MODIS_IR/TropicalBelt
 
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
         output_pkl_fmt: ${repository}/data/SGFF/level0/TB/IR_{s1:04g}-{s2:04g}_TropicalBelt.pkl
         output_pkl_joint: ./data/SGFF/level0/TB/joint/IR_TropicalBelt.pkl
         output_zarr: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr
-        input_images_fmt: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt/Aqua_Brightness_Temp_Band31_Day*.jpeg
+        output_zarr_masked: ./data/SGFF/level1/TB/IR_TropicalBelt_masked.zarr
+        input_images_fmt: ${datastore}data/MODIS/Aqua_MODIS_IR/TropicalBelt/Aqua_Brightness_Temp_Band31_Day*.jpeg
         classification_window_size: [700, 1050, 3]
         classification_window_increment: [200, 150, 3]

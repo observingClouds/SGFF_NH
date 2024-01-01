@@ -1,3 +1,9 @@
+vars:
+  - paths:
+      mount_point_data : ./
+  #- setups/TropicalBelt.yaml
+  - classification:
+      output_zarr: "/Users/haukeschulz/Documents/GitProjects/SGFF_NH/data/SGFF/level1/IR_TropicalBelt.zarr"
 stages:
   get_patterns_along_traj:
     cmd: python get_patterns_along_traj.py
@@ -35,91 +41,82 @@ stages:
     cmd: bash run_download_MODIS.sh ../../setups/IndianOcean.yaml
     wdir: data/MODIS
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/IndianOcean
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/IndianOcean
   classify_MODIS_IO:
-    cmd: bash run_classification_world.sh ../../setups/IndianOcean.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_classification_world.sh setups/IndianOcean.yaml
     outs:
-    - /mount/sgff/nfs/data/SGFF/level0/IO/
+    - ${paths.mount_point_data}/data/SGFF/level0/IO/
   download_MODIS_TB1:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt1.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt1.yaml
     deps:
-    - ../../setups/TropicalBelt1.yaml
+    - setups/TropicalBelt1.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1:
         cache: false
         persist: true
   download_MODIS_TB2:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt2.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt2.yaml
     deps:
-    - ../../setups/TropicalBelt2.yaml
+    - setups/TropicalBelt2.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
         cache: false
         persist: true
   download_MODIS_TB3:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt3.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt3.yaml
     deps:
-    - ../../setups/TropicalBelt3.yaml
+    - setups/TropicalBelt3.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3:
         cache: false
         persist: true
   download_MODIS_TB4:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt4.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt4.yaml
     deps:
-    - ../../setups/TropicalBelt4.yaml
+    - setups/TropicalBelt4.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4:
         cache: false
         persist: true
   download_MODIS_TB5:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt5.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt5.yaml
     deps:
-    - ../../setups/TropicalBelt5.yaml
+    - setups/TropicalBelt5.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5:
         cache: false
         persist: true
   download_MODIS_TB6:
-    cmd: bash run_download_MODIS.sh ../../setups/TropicalBelt6.yaml
-    wdir: data/MODIS
+    cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt6.yaml
     deps:
-    - ../../setups/TropicalBelt6.yaml
+    - setups/TropicalBelt6.yaml
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
         cache: false
         persist: true
   download_MODIS_TB:
     cmd: echo "Download all MODIS Tropical Belt images"
-    wdir: data/MODIS
     deps:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
   stitch_images_BT:
-    cmd: bash stitch_images.sh /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1/
-      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2/ /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3/
-      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4/ /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5/
-      /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6/
-    wdir: data/MODIS
+    cmd: bash data/MODIS/stitch_images.sh ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1/
+      ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2/ ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3/
+      ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4/ ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5/
+      ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6/
     deps:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
     outs:
-    - /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
+    - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
         cache: false
   classify_MODIS_TB:
     cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
@@ -130,13 +127,27 @@ stages:
   create_mask_TB:
     cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
     wdir: ./
-    vars: 
+    vars:
     - setups/TropicalBelt.yaml
     outs:
     - ${classification.output_zarr}
     - ${classification.output_pkl_joint}
     deps:
     - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+  mask_classifications:
+    cmd: python data/MODIS/mask_footprint.py setups/TropicalBelt.yaml
+    deps:
+    - data/MODIS/mask_footprint.py
+    - ${classification.output_zarr}/time
+    - ${classification.output_zarr}/latitude
+    - ${classification.output_zarr}/longitude
+    - ${classification.output_zarr}/pattern
+    - ${classification.output_zarr}/mask
+    outs:
+    - ${classification.output_zarr}/sat_mask:
+        cache: false
+    - ${classification.output_zarr}/sat_bt:
+        cache: false
   grid_mask_TB:
     cmd: python analysis/prepare_data_grid.py
     wdir: ./
