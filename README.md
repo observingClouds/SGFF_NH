@@ -10,7 +10,7 @@ dvc pull
 
 To reproduce results the environment can be created with
 ```
-mamba env install -n sgff -f environment.yml
+mamba env create -n sgff -f environment.yml
 ```
 and analysis steps rerun by simply calling
 ```
