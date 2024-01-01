@@ -9,4 +9,4 @@
 
 mamba activate covariability
 
-python image_download_MODIS.py --experiment $1
+python data/MODIS/image_download_MODIS.py --experiment $1

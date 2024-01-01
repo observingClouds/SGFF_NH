@@ -6,14 +6,14 @@ domain:
         lon_min: -180
         lon_max: -120
 
-months: [1,2,3,4,5,6,7,8,9,10,11,12]
-year_range: [2001,2023]
+months: [12]
+year_range: [2015,2016]
 satellite: Aqua
 variable: Brightness_Temp_Band31_Day
 
-output_dir_images: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1
+output_dir_images: ${datastore}/Aqua_MODIS_IR/TropicalBelt1
 
 classification:
         model: ${repository}/models/resnet50_csv_11_inference_IR.h5
         output_pkl_fmt: ${repository}/data/SGFF/level0/IR_{s1:04g}-{s2:04g}_TropicalBelt1.pkl
-        input_images_fmt: ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1/Aqua_Brightness_Temp_Band31_Day*.jpeg
+        input_images_fmt: ${datastore}/Aqua_MODIS_IR/TropicalBelt1/Aqua_Brightness_Temp_Band31_Day*.jpeg

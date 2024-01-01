@@ -14,5 +14,7 @@ dependencies:
   - cudatoolkit
   - tensorflow-gpu
   - pip
+  - opencv
+  - Imagemagick
   - pip:
     - keras-retinanet
