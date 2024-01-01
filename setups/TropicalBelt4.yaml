@@ -1,5 +1,5 @@
-repository: /home/azureuser/localfiles/SGFF_NH
-datastore: /mount/sgff/nfs
+repository: ./
+datastore: ./
 domain:
         lat_min: -15
         lat_max: 15
