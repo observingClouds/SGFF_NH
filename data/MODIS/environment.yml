@@ -1,8 +1,9 @@
 name: sgff
 channels:
   - conda-forge
+  - anaconda
 dependencies:
-  - python
+  - python=3.11
   - omegaconf
   - fire
   - scikit-image
@@ -10,11 +11,10 @@ dependencies:
   - pandas
   - tqdm
   - keras
-  - tensorflow
-  - cudatoolkit
-  - tensorflow-gpu
+  - dvc
   - pip
   - opencv
   - Imagemagick
   - pip:
     - keras-retinanet
+    - tensorflow[and-cuda]
