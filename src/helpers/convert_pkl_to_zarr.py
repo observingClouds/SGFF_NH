@@ -1,4 +1,5 @@
 import datetime as dt
+import os
 import sys
 from glob import glob
 
@@ -55,6 +56,9 @@ if __name__ == "__main__":
     df_all.reset_index(inplace=True)
 
     # Export concatenated dataframe as pickle
+    outdir = os.path.dirname(merged_pickle_out)
+    if not os.path.exists(outdir):
+        os.mkdir(outdir)
     df_all.to_pickle(merged_pickle_out)
 
     # Create file and calculate common boxes

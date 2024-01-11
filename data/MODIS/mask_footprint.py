@@ -124,7 +124,6 @@ if __name__ == "__main__":
     conf = fire.Fire(read_input)
     sat_image_path_fmt = conf["classification"]["input_images_fmt"]
     classification_path = conf["classification"]["output_zarr"]
-    classification_path = "/Users/haukeschulz/Documents/GitProjects/SGFF_NH/data/SGFF/level1/IR_TropicalBelt.zarr"
     output_path = conf["classification"]["output_zarr_masked"]
 
     cmap, cmap_label = create_colormap_from_xml("data/MODIS/worldview_BT_colormap.xml")
@@ -158,8 +157,6 @@ if __name__ == "__main__":
         "description"
     ] = "approximate brightness temperature of satellite retrievals"
     sat_bt.attrs["units"] = "K"
-
-    ds = ds.sel(time=slice("2015-12-01", "2015-12-02"))
 
     for t, time in enumerate(tqdm.tqdm(ds.time)):
         daily_ds = ds.sel(time=time)
