@@ -162,7 +162,7 @@ if __name__ == "__main__":
         daily_ds = ds.sel(time=time)
         sat_image = load_image(time.dt.date.values.item(0), sat_image_path_fmt)[
             ::2, ::2
-        ]
+        ][:-1, :-1]
         if sat_image is None:
             print("Failure to load image.")
             continue
