@@ -48,11 +48,6 @@ if __name__ == "__main__":
     df_all = pd.concat(dataframes)
     df_all.head()
 
-    if len(dataframes) > 1:
-        df_all = dataframes[-1]
-    else:
-        df_all = dataframes[0]
-
     df_all.reset_index(inplace=True)
 
     # Export concatenated dataframe as pickle
