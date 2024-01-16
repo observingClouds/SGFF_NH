@@ -134,7 +134,7 @@ stages:
     - ${classification.output_zarr}/mask
     - ${classification.output_pkl_joint}
     deps:
-    - ${datastore}/data/MODIS/Aqua_MODIS_IR/TropicalBelt
+    - ${datastore}/data/SGFF/level0/TB
   mask_classifications:
     cmd: python data/MODIS/mask_footprint.py setups/TropicalBelt.yaml
     vars:
