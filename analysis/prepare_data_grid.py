@@ -41,7 +41,8 @@ def calculate_mean(da):
 
 if __name__ == "__main__":
     ds_classifications_input = xr.open_zarr(fn_zarr)
-
+    print("Loading dataset into RAM")
+    # ds_classifications_input.load()
     # Create file and calculate common boxes
     print("Create output file")
     nb_times = len(ds_classifications_input.time)
@@ -138,6 +139,8 @@ if __name__ == "__main__":
     slice_size = 1
     mean = calculate_mean(ds_classifications_input.mask)
     for d in tqdm.tqdm(range(len(mean.time))):
+        if d < 7240:
+            continue
         count[d : d + slice_size, :, :, :] = mean.isel(
             time=slice(d, d + slice_size)
         ).values
