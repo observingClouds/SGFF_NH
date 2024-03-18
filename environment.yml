@@ -19,7 +19,7 @@ dependencies:
   - certifi
   - distributed
   - netcdf4
-  - intake
+  - intake<3.0.0
   - matplotlib
   - dvc
   - hvplot
