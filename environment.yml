@@ -58,3 +58,6 @@ dependencies:
   - selenium
   - firefox
   - geckodriver
+  - pip
+  - pip:
+    - opencv-python
