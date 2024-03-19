@@ -1,7 +1,7 @@
 curl micro.mamba.pm/install.sh | bash
 source ~/.bashrc
-micromamba create -f environment.yml
-source /home/azureuser/micromamba/envs/schulz_et_al_2023/bin/activate
+micromamba env create -f environment.yml -n schulz_et_al_2023
+source ${HOME}/micromamba/envs/schulz_et_al_2023/bin/activate
 
 # Mount NFS storage
 sudo apt-get -y update
