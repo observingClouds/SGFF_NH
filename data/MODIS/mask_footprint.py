@@ -166,6 +166,11 @@ if __name__ == "__main__":
         if sat_image is None:
             print("Failure to load image.")
             continue
+        elif sat_image.shape[:-1] != daily_ds.mask.transpose()[1, :].shape:
+            print(
+                f"Image and mask shapes do not match: {sat_image.shape[:-1]} vs {daily_ds.mask.transpose()[1,:].shape}."
+            )
+            continue
         else:
             sat_mask[t, :, :] = ~pixel_mask(sat_image).T
             bt = color2data(sat_image, cmap, cmap_label)
