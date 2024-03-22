@@ -5,26 +5,20 @@ import sys
 
 import dask
 import dask.array
+import fire
 import numpy as np
 import tqdm
 import xarray as xr
 import zarr
+from omegaconf import OmegaConf
 
 print("Finished loading modules")
 
-overwrite = False
-fn_zarr = "./data/SGFF/level1/TB/IR_TropicalBelt.zarr"
-output_file = (
-    "./data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF_2001-2015.zarr"
-)
-filter = True
-BT_THRESHOLD = 240
 
-grid_spacing = 2.5
-lat_bins = np.arange(-16.25, 16.25 + grid_spacing, grid_spacing)
-lat_center = np.arange(-15, 15 + grid_spacing, grid_spacing)
-lon_bins = np.arange(-181.25, 181.25 + grid_spacing, grid_spacing)
-lon_center = np.arange(-180, 180 + grid_spacing, grid_spacing)
+def read_input(experiment):
+    conf = OmegaConf.load(experiment)
+    return conf
+
 
 label_map = {"Sugar": 0, "Fish": 3, "Flowers": 2, "Flower": 2, "Gravel": 1}
 label_map_rv = {0: "Sugar", 1: "Gravel", 2: "Flowers", 3: "Fish"}
@@ -56,6 +50,27 @@ def count_cells(da):
 
 
 if __name__ == "__main__":
+    conf = fire.Fire(read_input)
+    fn_zarr = conf["classification"]["output_zarr"]
+    output_file = conf["gridding"]["output_zarr"]
+    grid_spacing = conf["gridding"]["grid_spacing"]
+    filter = conf["gridding"]["classification_filtering"]
+    BT_THRESHOLD = conf["gridding"]["classification_filtering_brightnessT_threshold"]
+    lats = conf["gridding"]["grid_lat_extent"]
+    lons = conf["gridding"]["grid_lon_extent"]
+
+    overwrite = False
+
+    gsp2 = np.array(grid_spacing) / 2
+    lat_bins = np.arange(
+        lats[0] - gsp2[0], lats[1] + gsp2[0] + grid_spacing[0], grid_spacing[0]
+    )
+    lat_center = np.arange(lats[0], lats[1] + grid_spacing[0], grid_spacing[0])
+    lon_bins = np.arange(
+        lons[0] - gsp2[1], lons[1] + gsp2[1] + grid_spacing[1], grid_spacing[1]
+    )
+    lon_center = np.arange(lons[0], lons[1] + grid_spacing[1], grid_spacing[1])
+
     ds_classifications_input = xr.open_zarr(fn_zarr)
 
     # Create file and calculate common boxes

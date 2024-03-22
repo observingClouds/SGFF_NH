@@ -152,7 +152,7 @@ stages:
     - ${classification.output_zarr}/sat_bt:
         cache: false
   grid_mask_TB:
-    cmd: python analysis/prepare_data_grid.py
+    cmd: python analysis/prepare_data_grid.py setups/TropicalBelt.yaml
     wdir: ./
     vars:
     - setups/TropicalBelt.yaml

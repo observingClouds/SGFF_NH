@@ -22,3 +22,11 @@ classification:
         input_images_fmt: ${datastore}data/MODIS/Aqua_MODIS_IR/TropicalBelt/Aqua_Brightness_Temp_Band31_Day*.jpeg
         classification_window_size: [700, 1050, 3]
         classification_window_increment: [200, 150, 3]
+
+gridding:
+        output_zarr: ./data/SGFF/level2/TB/Daily_2.5x2.5_MODIS-IR_TropicalBelt_SGFF.zarr
+        grid_spacing: [2.5, 2.5]
+        grid_lat_extent: [-15, 15]
+        grid_lon_extent: [-180, 180]
+        classification_filtering: True
+        classification_filtering_brightnessT_threshold: 240
