@@ -233,22 +233,23 @@ stages:
       size: 53959523156
       nfiles: 8035
   classify_MODIS_TB:
-    cmd: bash run_classification_world.sh ../../setups/TropicalBelt.yaml
+    cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
     outs:
-    - path: ../SGFF/level0/TB
-      md5: fd04f3106e456975be1abe7aa9b23548.dir
-      size: 19737185
-      nfiles: 12
+    - path: .//data/SGFF/level0/TB/
+      hash: md5
+      md5: 5dfcde9278a6824610cc875f87a02fb2.dir
+      size: 101431986
+      nfiles: 18
   create_mask_TB:
     cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
     deps:
     - path: .//data/SGFF/level0/TB
       hash: md5
-      md5: 1d61a125ccc1294a97949bd81a9e70ae.dir
-      size: 210671431
-      nfiles: 19
+      md5: 5dfcde9278a6824610cc875f87a02fb2.dir
+      size: 101431986
+      nfiles: 18
     outs:
-    - path: ./data/SGFF/level0/TB/joint/IR_TropicalBelt.pkl
+    - path: ./data/SGFF/level0.5/TB/IR_TropicalBelt.pkl
       hash: md5
       md5: 126447e1c4789fb92249eaf78c4ce476
       size: 109239445

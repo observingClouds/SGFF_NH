@@ -118,8 +118,10 @@ stages:
   classify_MODIS_TB:
     cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
     wdir: ./
+    vars:
+    - setups/TropicalBelt.yaml
     outs:
-    - ./data/SGFF/level0/TB/*.pkl:
+    - ${datastore}/data/SGFF/level0/TB/:
         persist: true
   create_mask_TB:
     cmd: python src/helpers/convert_pkl_to_zarr.py setups/TropicalBelt.yaml
