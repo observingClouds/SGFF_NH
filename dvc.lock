@@ -228,10 +228,11 @@ stages:
       size: 9881643325
       nfiles: 8035
     outs:
-    - path: /mount/sgff/nfs/data/MODIS/Aqua_MODIS_IR/TropicalBelt
-      md5: a7e09aac8d29a2312dd28d3118e3a91c.dir
-      size: 53959523156
-      nfiles: 8035
+    - path: .//data/MODIS/Aqua_MODIS_IR/TropicalBelt
+      hash: md5
+      md5: 67939c0019133cdd060b68a4a41bf5bc.dir
+      size: 56102981498
+      nfiles: 8400
   classify_MODIS_TB:
     cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
     outs:
