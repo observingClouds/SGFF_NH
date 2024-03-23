@@ -51,6 +51,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB2:
     cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt2.yaml
     deps:
@@ -59,6 +60,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB3:
     cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt3.yaml
     deps:
@@ -67,6 +69,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB4:
     cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt4.yaml
     deps:
@@ -75,6 +78,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB5:
     cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt5.yaml
     deps:
@@ -83,6 +87,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB6:
     cmd: bash data/MODIS/run_download_MODIS.sh setups/TropicalBelt6.yaml
     deps:
@@ -91,6 +96,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6:
         cache: false
         persist: true
+    frozen: true
   download_MODIS_TB:
     cmd: echo "Download all MODIS Tropical Belt images"
     deps:
@@ -100,6 +106,7 @@ stages:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt4
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt5
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt6
+    frozen : true
   stitch_images_BT:
     cmd: bash data/MODIS/stitch_images.sh ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt1/
       ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt2/ ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt3/
@@ -115,6 +122,7 @@ stages:
     outs:
     - ${paths.mount_point_data}/data/MODIS/Aqua_MODIS_IR/TropicalBelt:
         cache: false
+    frozen: true
   classify_MODIS_TB:
     cmd: bash ./data/MODIS/run_classification_world.sh setups/TropicalBelt.yaml
     wdir: ./
