@@ -22,6 +22,9 @@ dvc repro patterns_along_traj
 ```
 to only reproduce specific steps which are listed in `dvc.yaml`
 
+> [!NOTE]
+> Some stages have been frozen to prevent them from being reproduced. Those stages are for example the classification of images or the download of images as they are computationally and/or storagewise very expensive. `dvc repro --force` needs to be used to run those stages or the `frozen: true` in the dvc.yaml needs to be deleted.
+
 
 ## Potential issues
 
