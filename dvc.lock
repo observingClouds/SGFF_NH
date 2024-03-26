@@ -291,3 +291,46 @@ stages:
       md5: d3ed3b893fe4ac322e344a8b438c8b5e.dir
       size: 6248012
       nfiles: 4934
+  mask_classifications:
+    cmd: python data/MODIS/mask_footprint.py setups/TropicalBelt.yaml
+    deps:
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/latitude
+      hash: md5
+      md5: f03c70169108c30fd1837e3fc64c1e6a.dir
+      size: 6960
+      nfiles: 3
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/longitude
+      hash: md5
+      md5: b01ba6be1ca3c078347f044fc6793ac8.dir
+      size: 92640
+      nfiles: 3
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/mask
+      hash: md5
+      md5: d618ce997d2254044fa680b2a83e759a.dir
+      size: 4692645140
+      nfiles: 7570
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/pattern
+      hash: md5
+      md5: 398e12946d92207bb3b291fb90aaa252.dir
+      size: 370
+      nfiles: 3
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/time
+      hash: md5
+      md5: 00c567d95defa51a689ec6bafe4b6baf.dir
+      size: 39604
+      nfiles: 3
+    - path: data/MODIS/mask_footprint.py
+      hash: md5
+      md5: 8e110483dbda56fb3957da2be59457fd
+      size: 5864
+    outs:
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/sat_bt
+      hash: md5
+      md5: 2c9cd392f845dfad6c83893a078d6b67.dir
+      size: 77450772826
+      nfiles: 7557
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/sat_mask
+      hash: md5
+      md5: 26aff81403fdc920e2f831d1296ff50e.dir
+      size: 1407109545
+      nfiles: 7557
