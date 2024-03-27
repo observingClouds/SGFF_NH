@@ -1,6 +1,8 @@
 [core]
-    remote = owncloud-remote
+    remote = s3
 ['remote "owncloud-remote"']
     url = webdavs://owncloud.gwdg.de/public.php/webdav
     user = B7wtwgWGDICCOJW
     password = ''
+['remote "s3"']
+    url = s3://sgff
