@@ -160,10 +160,8 @@ stages:
     - ${classification.output_zarr}/.zgroup
     - ${classification.output_zarr}/.zattrs
     outs:
-    - ${classification.output_zarr}/sat_mask:
-        cache: false
-    - ${classification.output_zarr}/sat_bt:
-        cache: false
+    - ${classification.output_zarr}/sat_mask
+    - ${classification.output_zarr}/sat_bt
   grid_mask_TB:
     cmd: python analysis/prepare_data_grid.py setups/TropicalBelt.yaml
     wdir: ./
