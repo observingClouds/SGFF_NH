@@ -156,6 +156,9 @@ stages:
     - ${classification.output_zarr}/longitude
     - ${classification.output_zarr}/pattern
     - ${classification.output_zarr}/mask
+    - ${classification.output_zarr}/.zmetadata
+    - ${classification.output_zarr}/.zgroup
+    - ${classification.output_zarr}/.zattrs
     outs:
     - ${classification.output_zarr}/sat_mask:
         cache: false
