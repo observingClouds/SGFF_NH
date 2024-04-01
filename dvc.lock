@@ -296,6 +296,18 @@ stages:
   mask_classifications:
     cmd: python data/MODIS/mask_footprint.py setups/TropicalBelt.yaml
     deps:
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/.zattrs
+      hash: md5
+      md5: 38a387dbed967fa82851311bd9b4765a
+      size: 381
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/.zgroup
+      hash: md5
+      md5: e20297935e73dd0154104d4ea53040ab
+      size: 24
+    - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/.zmetadata
+      hash: md5
+      md5: c035e555d3bd6548d7a884e704fe45e2
+      size: 5216
     - path: ./data/SGFF/level1/TB/IR_TropicalBelt.zarr/latitude
       hash: md5
       md5: f03c70169108c30fd1837e3fc64c1e6a.dir
