@@ -1,0 +1,19 @@
+plugins:
+  source:
+    - module: intake_xarray
+
+sources:
+  SGFF_level1:
+    args:
+      urlpath: reference::fsspec_ref.json
+      storage_options:
+          remote_options: {'anon':True}
+    description: Daily SGFF classification across the tropical belt including satellite brightness temperatures.
+    driver: zarr
+  SGFF_level2:
+    args:
+      urlpath: reference::catalog/references/fsspec_ref_28ecdbd59fcddc4de087cb9e49f5b7e5.json
+      storage_options:
+          remote_options: {'anon':True}
+    description: Daily SGFF classification across the tropical belt including satellite brightness temperatures.
+    driver: zarr
