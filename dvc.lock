@@ -290,7 +290,7 @@ stages:
     outs:
     - path: data/SGFF/level2/TB/
       hash: md5
-      md5: 12b36c92065458732804fa27e022d622.dir
+      md5: 28ecdbd59fcddc4de087cb9e49f5b7e5.dir
       size: 71386433
       nfiles: 15155
   mask_classifications:
