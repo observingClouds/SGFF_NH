@@ -1,5 +1,16 @@
 # Neural network classifications of mesoscale patterns of shallow convection
 
+## Access classification products
+Some of the classification products are publically hosted. They can be accessed via an intake catalog.
+
+```python
+import intake
+cat = intake.open_catalog("https://raw.githubusercontent.com/observingClouds/SGFF_NH/main/catalog/catalog.yml")
+ds = cat.SGFF_level2.to_dask()
+```
+
+This access method always points to the newest version of the dataset. Please make sure to install `intake <2.0.0` as newer versions currently do not support the given catalog format.
+
 ## Download repository and data
 
 This repository uses [dvc](dvc.org) to version the data. To work with the recent version of data please execute the following:
