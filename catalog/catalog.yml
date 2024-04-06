@@ -8,6 +8,7 @@ sources:
       urlpath: reference::https://raw.githubusercontent.com/observingClouds/SGFF_NH/main/catalog/references/fsspec_ref_41f03e31bf8d880a5a8723b33999db8e.json
       storage_options:
           remote_options: {'anon':True}
+      consolidated: True
     description: Daily SGFF classification across the tropical belt including satellite brightness temperatures.
     driver: zarr
   SGFF_level2:
