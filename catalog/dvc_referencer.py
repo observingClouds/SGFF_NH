@@ -1,6 +1,6 @@
 import json
 
-file_path = ".dvc/cache/files/md5/28/ecdbd59fcddc4de087cb9e49f5b7e5.dir"
+file_path = "../.dvc/cache/41/f03e31bf8d880a5a8723b33999db8e.dir"
 
 with open(file_path) as file:
     data = json.load(file)
@@ -20,6 +20,6 @@ for item in data:
     ]
 
 # Write fsspec_ref_dict to JSON file
-output_file_path = "catalog/references/fsspec_ref_28ecdbd59fcddc4de087cb9e49f5b7e5.json"
+output_file_path = "references/fsspec_ref_41f03e31bf8d880a5a8723b33999db8e.json"
 with open(output_file_path, "w") as output_file:
     json.dump(fsspec_ref_dict, output_file)
